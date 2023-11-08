@@ -13,6 +13,28 @@
   <!-- Content -->
   <div layout:fragment="content">
     <h1>Test 페이지</h1>
+    <div class="container">
+<!--      <form>-->
+        <div class="row">
+          <div class="col-4">
+            <span>아이디 : </span>
+            <input type="text" id="id">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <span>비밀번호 : </span>
+            <input type="password" id="password">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <button class="btn btn-secondary btn-sm" id="loginButton">로그인</button>
+            <button class="btn btn-secondary btn-sm" id="registerButton">회원가입</button>
+          </div>
+        </div>
+<!--      </form>-->
+    </div>
   </div>
 
   <div layout:fragment="contentModal">
