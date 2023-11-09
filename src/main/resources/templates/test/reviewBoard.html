@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+
+<head>
+<th:block layout:fragment="userCss">
+  </th:block>
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+</head>
+<body>
+<!-- Content -->
+  <div layout:fragment="content">
+  
+  <div class="container">
+    <header id="article-form-header" class="py-5 text-center">
+        <h1>후기 게시글 작성</h1>
+    </header>
+
+    <form id="article-form">
+        <div class="row mb-3 justify-content-md-center">
+            <label for="title" class="col-sm-2 col-lg-1 col-form-label text-sm-end">제목</label>
+            <div class="col-sm-8 col-lg-9">
+                <input type="text" class="form-control" id="title" name="title" required>
+            </div>
+        </div>
+        <div class="row mb-4 justify-content-md-center">
+            <label for="hashtag" class="col-sm-2 col-lg-1 col-form-label text-sm-end">작성자</label>
+            <div class="col-sm-8 col-lg-9">
+                <input type="text" class="form-control" id="hashtag" name="hashtag">
+            </div>
+        </div>
+        <div class="row mb-3 justify-content-md-center">
+            <label for="content" class="col-sm-2 col-lg-1 col-form-label text-sm-end">내용</label>
+            <div class="col-sm-8 col-lg-9">
+                <textarea class="form-control" id="content" name="content" rows="10" required></textarea>
+            </div>
+        </div>
+        <div class="row mb-4 justify-content-md-center">
+            <label for="hashtag" class="col-sm-2 col-lg-1 col-form-label text-sm-end">파일 첨부</label>
+            <div class="col-sm-8 col-lg-9">
+                <input type="file" class="form-control" id="hashtag" name="hashtag">
+            </div>
+        </div>
+        <div class="row mb-4 justify-content-md-center">
+            <label for="hashtag" class="col-sm-2 col-lg-1 col-form-label text-sm-end">별점</label>
+            <div class="col-sm-8 col-lg-9">
+                <input type="text" class="form-control" id="hashtag" name="hashtag">
+            </div>
+        </div>
+        <div class="row mb-4 justify-content-md-center">
+            <label for="hashtag" class="col-sm-2 col-lg-1 col-form-label text-sm-end">별점</label>
+           
+
+            <div class="rating col-sm-8 col-lg-9">
+                <span class="rating__result"></span> 
+                <i class="rating__star far fa-star"></i>
+                <i class="rating__star far fa-star"></i>
+                <i class="rating__star far fa-star"></i>
+                <i class="rating__star far fa-star"></i>
+                <i class="rating__star far fa-star"></i>
+            </div>
+        </div>
+        <div class="row mb-4 justify-content-md-center">
+            <label for="hashtag" class="col-sm-2 col-lg-1 col-form-label text-sm-end">해시태그</label>
+            <div class="col-sm-8 col-lg-9">
+                <input type="text" class="form-control" id="hashtag" name="hashtag">
+            </div>
+        </div>
+        
+        <div class="row mb-5 justify-content-md-center">
+            <div class="col-sm-10 d-grid gap-2 d-sm-flex justify-content-sm-end">
+                <button type="submit" class="btn btn-primary" id="submit-button">저장</button>
+                <button type="button" class="btn btn-secondary" id="cancel-button">취소</button>
+            </div>
+        </div>
+    </form>
+</div>
+  
+  
+  
+  </div>
+  <!-- 스크립트 추가 -->
+  <th:block layout:fragment="userScript">
+    <script type="text/javascript" th:src="@{/js/test/test.js}" defer></script>
+  </th:block>
+
+
+</body>
+</html>
