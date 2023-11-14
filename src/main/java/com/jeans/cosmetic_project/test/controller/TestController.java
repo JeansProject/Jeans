@@ -11,7 +11,7 @@ public class TestController {
 
     private final TestService testServiceImpl;
 
-    @GetMapping("/")
+    @GetMapping("/test")
     public String test() {
         return "test/test";
     }
