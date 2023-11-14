@@ -1,5 +1,7 @@
 console.log("test js init")
 
+//doucument 에서 querySelector라는 메소드를 통해서, id가 이것인 것의 정보를 가져오겠다. 
+//            <button class="btn btn-secondary btn-sm" id="loginButton">로그인</button> 이 자체를 가져오는 것
 const loginButton = document.querySelector('#loginButton');
 loginButton.addEventListener('click', function() {
   getUserInfo();
