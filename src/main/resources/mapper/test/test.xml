@@ -12,4 +12,14 @@
     INSERT INTO users(id, password, email, phone, name)
     VALUES(#{id}, #{password}, 'lee@email.com', '01011112222', '이현재2')
   </insert>
+
+  <select id="getUserInfoById" parameterType="String" resultType="com.jeans.cosmetic_project.test.dto.UserInfoDto">
+    SELECT id as id,
+           password as password,
+           name as name,
+           email as email,
+           phone as phone
+    FROM users
+    WHERE id = #{id}
+  </select>
 </mapper>

@@ -2,15 +2,16 @@ package com.jeans.cosmetic_project.test.controller;
 
 import com.jeans.cosmetic_project.test.dto.LoginUser;
 import com.jeans.cosmetic_project.test.dto.TestDto;
+import com.jeans.cosmetic_project.test.dto.UserInfoDto;
 import com.jeans.cosmetic_project.test.service.TestService;
-import com.jeans.cosmetic_project.test.service.TestServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -18,14 +19,14 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class TestRestController {
 
-    private final TestService TestServiceImpl;
+    private final TestService testServiceImpl;
 
     @PostMapping("/login")
     public ResponseEntity login(@RequestBody TestDto loginUser) {
         log.info("loginUserId = {}", loginUser.getId());
         log.info("loginUserPassword = {}", loginUser.getPassword());
 
-        LoginUser successLoginUser = TestServiceImpl.login(loginUser);
+        LoginUser successLoginUser = testServiceImpl.login(loginUser);
         log.info("successLoginUserSeq = {}", successLoginUser.getSeq());
         log.info("successLoginUserId = {}", successLoginUser.getId());
         log.info("successLoginUserName = {}", successLoginUser.getName());
@@ -38,9 +39,16 @@ public class TestRestController {
         log.info("loginUserId = {}", loginUser.getId());
         log.info("loginUserPassword = {}", loginUser.getPassword());
 
-        int registerResult = TestServiceImpl.register(loginUser);
+        int registerResult = testServiceImpl.register(loginUser);
         log.info("result = {}", registerResult);
 
         return new ResponseEntity(registerResult, HttpStatus.OK);
+    }
+
+    @GetMapping("/get-user-info")
+    public ResponseEntity getUserInfoById(@RequestParam("id") String id) {
+        log.info("id = {}", id);
+        UserInfoDto userInfo = testServiceImpl.getUserInfoById(id);
+        return new ResponseEntity(userInfo, HttpStatus.OK);
     }
 }

@@ -15,4 +15,9 @@ public class TestController {
     public String test() {
         return "test/test";
     }
+
+    @GetMapping("/my-page")
+    public String myPage() {
+        return "test/myPage";
+    }
 }
