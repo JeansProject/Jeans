@@ -22,4 +22,10 @@
     FROM users
     WHERE id = #{id}
   </select>
+
+    <update id="updateUserInfoById" parameterType="com.jeans.cosmetic_project.test.dto.UpdateUserInfoRequestDto">
+        UPDATE users
+        SET name = #{name}, phone = #{phone}
+        WHERE id = #{id}
+    </update>
 </mapper>

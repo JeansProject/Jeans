@@ -2,6 +2,7 @@ package com.jeans.cosmetic_project.test.dao;
 
 import com.jeans.cosmetic_project.test.dto.LoginUser;
 import com.jeans.cosmetic_project.test.dto.TestDto;
+import com.jeans.cosmetic_project.test.dto.UpdateUserInfoRequestDto;
 import com.jeans.cosmetic_project.test.dto.UserInfoDto;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -13,4 +14,6 @@ public interface TestDao {
     int register(TestDto registerUser);
 
     UserInfoDto getUserInfoById(String id);
+
+    int updateUserInfoById(UpdateUserInfoRequestDto updateUserInfoRequestDto);
 }

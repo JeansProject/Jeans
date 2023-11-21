@@ -3,6 +3,7 @@ package com.jeans.cosmetic_project.test.service;
 import com.jeans.cosmetic_project.test.dao.TestDao;
 import com.jeans.cosmetic_project.test.dto.LoginUser;
 import com.jeans.cosmetic_project.test.dto.TestDto;
+import com.jeans.cosmetic_project.test.dto.UpdateUserInfoRequestDto;
 import com.jeans.cosmetic_project.test.dto.UserInfoDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -29,5 +30,12 @@ public class TestServiceImpl implements TestService {
     public UserInfoDto getUserInfoById(String id) {
         UserInfoDto userInfoDto = testDao.getUserInfoById(id);
         return userInfoDto;
+    }
+
+    @Override
+    public int updateUserInfoById(String id, UpdateUserInfoRequestDto updateUserInfoRequestDto) {
+        updateUserInfoRequestDto.setId(id);
+        int updateResult = testDao.updateUserInfoById(updateUserInfoRequestDto);
+        return 0;
     }
 }

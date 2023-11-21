@@ -2,6 +2,7 @@ package com.jeans.cosmetic_project.test.service;
 
 import com.jeans.cosmetic_project.test.dto.LoginUser;
 import com.jeans.cosmetic_project.test.dto.TestDto;
+import com.jeans.cosmetic_project.test.dto.UpdateUserInfoRequestDto;
 import com.jeans.cosmetic_project.test.dto.UserInfoDto;
 
 public interface TestService {
@@ -11,4 +12,6 @@ public interface TestService {
     int register(TestDto loginUser);
 
     UserInfoDto getUserInfoById(String id);
+
+    int updateUserInfoById(String id, UpdateUserInfoRequestDto updateUserInfoRequestDto);
 }
