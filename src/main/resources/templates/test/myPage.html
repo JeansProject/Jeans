@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+
+<head>
+  <th:block layout:fragment="userCss">
+  </th:block>
+</head>
+
+<body>
+	<!-- Content -->
+	<div layout:fragment="content">
+		<h1>Test 페이지</h1>
+		<div class="container slider">
+			<!--      <form>-->
+			<h1>마이페이지 페이지</h1>
+			<div class="row">
+				<div class="col-4">
+					<span>아이디 : </span> <input type="text" id="id">
+				</div>
+			</div>
+
+
+			<div class="row">
+				<div class="col-4">
+					<span>비밀번호 : </span> <input type="password" id="password">
+				</div>
+			</div>
+
+
+			<div class="row">
+				<div class="col-4">
+					<span>이름 : </span> <input type="text" id="name">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-4">
+					<span>이메일 : </span> <input type="text" id="email">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-4">
+					<span>전화번호 : </span> <input type="text" id="phone">
+				</div>
+			</div>
+
+
+
+		</div>
+	</div>
+
+	<div layout:fragment="contentModal"></div>
+
+	<!-- 스크립트 추가 -->
+	<th:block layout:fragment="userScript">
+		<script type="text/javascript" th:src="@{/js/test/myPage.js}" defer></script>
+	</th:block>
+</body>
+
+</html>
