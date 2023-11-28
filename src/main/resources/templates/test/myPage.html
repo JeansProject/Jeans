@@ -10,55 +10,53 @@
 </head>
 
 <body>
-<!-- Content -->
-<div layout:fragment="content">
-  <h1>Test 페이지</h1>
-  <div class="container slider">
-    <h1>마이페이지 테스트</h1>
+	<!-- Content -->
+	<div layout:fragment="content">
+		<h1>Test 페이지</h1>
+		<div class="container slider">
+			<!--      <form>-->
+			<h1>마이페이지 페이지</h1>
+			<div class="row">
+				<div class="col-4">
+					<span>아이디 : </span> <input type="text" id="id">
+				</div>
+			</div>
 
-    <div class="row">
-      <div class="col-4">
-        <span>아이디 : </span>
-        <input type="text" id="id" readonly>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-4">
-        <span>비밀번호 : </span>
-        <input type="password" id="password">
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-4">
-        <span>이름 : </span>
-        <input type="text" id="name">
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-4">
-        <span>이메일 : </span>
-        <input type="text" id="email" readonly>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-4">
-        <span>전화번호 : </span>
-        <input type="text" id="phone">
-      </div>
-    </div>
-    <div class="row">
-      <button type="button" class="btn btn-secondary btn-sm" id="updateButton">저장</button>
-    </div>
-  </div>
-</div>
 
-<div layout:fragment="contentModal">
-</div>
+			<div class="row">
+				<div class="col-4">
+					<span>비밀번호 : </span> <input type="password" id="password">
+				</div>
+			</div>
 
-<!-- 스크립트 추가 -->
-<th:block layout:fragment="userScript">
-  <script type="text/javascript" th:src="@{/js/test/myPage.js}" defer></script>
-</th:block>
+
+			<div class="row">
+				<div class="col-4">
+					<span>이름 : </span> <input type="text" id="name">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-4">
+					<span>이메일 : </span> <input type="text" id="email">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-4">
+					<span>전화번호 : </span> <input type="text" id="phone">
+				</div>
+			</div>
+
+
+
+		</div>
+	</div>
+
+	<div layout:fragment="contentModal"></div>
+
+	<!-- 스크립트 추가 -->
+	<th:block layout:fragment="userScript">
+		<script type="text/javascript" th:src="@{/js/test/myPage.js}" defer></script>
+	</th:block>
 </body>
 
 </html>
