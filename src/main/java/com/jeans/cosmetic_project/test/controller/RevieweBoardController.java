@@ -10,15 +10,16 @@ import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequiredArgsConstructor
-public class TestController {
+public class RevieweBoardController {
 
     private final TestService testServiceImpl;
 
-    @GetMapping("/")
-    public String test() {
-        return "test/test";
+     
+    @GetMapping("/reviewBoard")
+    public String reviewBoard() {
+    	
+    	return "test/reviewBoard";
+    	
     }
-    
-    
    
 }
