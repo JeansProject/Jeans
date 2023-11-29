@@ -1,52 +1,49 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout/layout}">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
 
 <head>
-  <th:block layout:fragment="userCss">
-  </th:block>
+    <th:block layout:fragment="userCss">
+    </th:block>
 </head>
 
 <body>
-	<!-- Content -->
-	<div layout:fragment="content">
-		<h1>Login 페이지</h1>
-		<div class="container slider">
-			<!--<form>-->
-			<h1>로그인 페이지</h1>
-            <form>
-			<div class="form-floating">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                <label for="floatingInput">Email address</label>
-            </div>
-            <div class="form-floating">
-                <input type="passward" class="form-control" id="floatingPassword" placeholder="Password">
-                <label for="floatingPassword">Password</label>
-            </div>
-            <div class="checkbox mb-3">
-                <label> == $0
-                    <input type="checkbox" value="remember-me">
-                    " Remember me "
-                </label>
-            </div>
-            <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+    <!-- Content -->
+    <div layout:fragment="content">
+        <h1>Login 페이지</h1>
+        <div class="container slider">
+                <!--<form>-->
+                <!-- <h1>로그인 페이지</h1> -->
+                <form>
+                    <div class="form-floating gap-2 col-8 mx-auto">
+                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                        <label for="floatingInput">Email address</label>
+                    </div>
+                    <div class="form-floating gap-2 col-8 mx-auto">
+                        <input type="passward" class="form-control" id="floatingPassword" placeholder="Password">
+                        <label for="floatingPassword">Password</label>
+                    </div>
+                    <div class="checkbox mb-3 gap-2 col-8 mx-auto">
+                        <label>
+                            <input type="checkbox" value="remember-me">
+                            Remember me
+                        </label>
+                    </div>
 
-            <div class="d-grid gap-2 col-6 mx-auto">
-                <button class="btn btn-primary" type="button">login</button>
-                <button class="btn btn-primary" type="button">sign</button>
-              </div>
-            </form>
-		</div>
-	</div>
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <button class="btn btn-primary" type="button">login</button>
+                        <button class="btn btn-primary" type="button">sign</button>
+                    </div>
+                </form>
+        </div>
+    </div>
 
-	<div layout:fragment="contentModal"></div>
+    <div layout:fragment="contentModal"></div>
 
-	<!-- 스크립트 추가 -->
-	<th:block layout:fragment="userScript">
-		<script type="text/javascript" th:src="@{/js/test/myPage.js}" defer></script>
-	</th:block>
+    <!-- 스크립트 추가 -->
+    <th:block layout:fragment="userScript">
+        <script type="text/javascript" th:src="@{/js/test/myPage.js}" defer></script>
+    </th:block>
 </body>
 
 </html>

@@ -25,5 +25,12 @@ public class TestController {
     	return "test/reviewBoard";
     	
     }
+
+    @GetMapping("/login")
+    public String login() {
+    	
+    	return "test/login";
+    	
+    }
    
 }
