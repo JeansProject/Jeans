@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:text-decoration="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layout/layout}">
+
+<head>
+    <th:block layout:fragment="userCss">
+    </th:block>
+</head>
+
+<body>
+<!-- Content -->
+<div layout:fragment="content">
+    <div  class="container slider">
+        <!--      <form>-->
+        <h1><a th:href="@{/test/noticeList}" style="text-decoration: none;">공지사항 목록</a></h1>
+    </div>
+
+<div>
+    <div>
+        <h4> <a style="font-weight: bolder;">상세내용</a></h4>
+        <br/>
+        <form role="form" th:object="${NoticeDto}"
+              th:action="@{/test/noticeList}" method="post">
+            <div>
+                <label style="font-weight: bolder;">제목</label>
+                <p th:text="${notice.title}"></p>
+                <input type="hidden" th:feild="${notice.title}">
+            </div>
+            <div>
+                <label style="font-weight: bolder;">작성자</label>
+                <p th:text="${notice.writer}"></p>
+                <input type="hidden" th:field="${notice.writer}">
+            </div>
+            <div>
+            <label style="font-weight: bolder;">작성일자</label>
+            <p th:text="${notice.write_time}"></p>
+            </div>
+                <div>
+    <label style="font-weight: bolder;">첨부파일</label>
+    </div>
+    <div>
+    <label style="font-weight: bolder;">내용</label>
+    <p th:text="${notice.content}"></p>
+    <input type="hidden" th:field="${notice.content}">
+</div>
+<div style="text-align; right;">
+    <input type="submit" th:value="목록"
+           th:formaction="@{/test/noticeList}">
+    <input type="submit" th:value="수정"
+           th:formaction="@{/test/update/{seq}(seq=${notice.seq})}">
+    <input type="submit" th:value="삭제"
+           th:formaction="@{/test/delete/{seq}(seq=${notice.seq})}">
+</div>
+</form>
+    </div>
+
+</div>
+<br/><br/><br/>
+
+
+
+<!--&lt;!&ndash; 스크립트 추가 &ndash;&gt;-->
+<!--<th:block layout:fragment="userScript">-->
+<!--    <script type="text/javascript" th:src="@{/js/test/test.js}" defer></script>-->
+<!--</th:block>-->
+</div>
+</body>
+
+</html>

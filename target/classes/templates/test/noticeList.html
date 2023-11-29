@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+
+<head>
+    <th:block layout:fragment="userCss">
+    </th:block>
+</head>
+
+<body>
+<!-- Content -->
+<div layout:fragment="content">
+    <div  class="container slider">
+        <!--      <form>-->
+        <div class="row" style="padding: 10px; text-align: center;">
+            <h1><a th:href="@{/test/noticeList}" style="text-decoration: none;">공지사항</a></h1>
+        </div>
+        <h1>공지사항 목록</h1>
+        <div class="row">
+            <table>
+                <thead style="text-align: center;">
+                <tr>
+                    <th style="text-align: center">순서</th>
+                    <th style="text-align: center">작성자</th>
+                    <th style="text-align: center">제목</th>
+                    <th style="text-align: center">작성일</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="data : ${testList}" th:onclick=
+                            "'window.location.href = \'' + @{/test/notice/{seq}(seq=${data.seq})} + '\''">
+                        <td th:text="${data.seq}" style="cursor: pointer; text-align: center;"></td>
+                        <td th:text="${data.writer}" style="cursor: pointer; text-align: center;"></td>
+                        <td th:text="${data.title}" style="cursor: pointer; text-align: center;"></td>
+                        <td th:text="${data.write_time}" style="cursor: pointer; text-align: center;"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div style="text-align: right;">
+            <button onclick="location.href='/test/insert/new'">글작성</button>
+        </div>
+        <br/><br/><br/>
+    </div>
+</div>
+        <!--      </form>-->
+
+
+<div layout:fragment="contentModal">
+</div>
+
+<!-- 스크립트 추가 -->
+<!--<th:block layout:fragment="userScript">-->
+<!--    <script type="text/javascript" th:src="@{/js/test/test.js}" defer></script>-->
+<!--</th:block>-->
+</body>
+
+</html>

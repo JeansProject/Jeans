@@ -12,14 +12,14 @@
 <body>
 <!-- Content -->
 <div layout:fragment="content">
-    <div  class="container">
+    <div  class="container slider">
         <!--      <form>-->
         <h1><a th:href="@{/test/noticeList}" style="text-decoration: none;">공지사항 목록</a></h1>
     </div>
 
 <div>
     <div>
-        <h4> style="font-weight: bolder;>상세내용</h4>
+        <h4> <a style="font-weight: bolder;">상세내용</a></h4>
         <br/>
         <form role="form" th:object="${NoticeDto}"
               th:action="@{/test/noticeList}" method="post">
