@@ -2,7 +2,6 @@ package com.jeans.cosmetic_project.test.controller;
 
 import com.jeans.cosmetic_project.test.dto.NoticeDto;
 import com.jeans.cosmetic_project.test.service.NoticeService;
-import com.jeans.cosmetic_project.test.service.TestService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -20,8 +19,8 @@ import java.util.List;
 @RequestMapping("/test")
 public class TestController {
 
-    private final TestService testServiceImpl;
-    private final NoticeService noticeServiceImpl;
+//    private final TestService testServiceImpl;
+      private final NoticeService noticeServiceImpl;
 
     @GetMapping("/test")
     public String test() {

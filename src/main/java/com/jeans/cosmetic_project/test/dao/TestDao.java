@@ -8,16 +8,9 @@ import java.util.List;
 public interface TestDao {
 
 
-
-    int register(TestDto registerUser);
-
-    UserInfoDto getUserInfoById(String id);
-
     List<NoticeDto> getNoticeList();
     NoticeDto noticeContent(int seq);
     int noticeInsert(NoticeDto notice);
     int noticeUpdate(NoticeDto notice);
     int noticeDelete(int seq);
-
-    int updateUserInfoById(UpdateUserInfoRequestDto updateUserInfoRequestDto);
 }
