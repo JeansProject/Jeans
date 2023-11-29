@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+
+<head>
+    <th:block layout:fragment="userCss">
+    </th:block>
+</head>
+
+<body>
+<div layout:fragment="content">
+    <div  class="container slider">
+        <h1><a th:href="@{/noticeList}" style="text-decoration:none">게시글 수정</a> </h1>
+    </div>
+<div>
+    <form role="form" th:object="${NoticeDto}"
+          th:action="@{/test/updateProc" mehod="post">
+        <div>
+            <label for="title" style="font-weight: bolder;">제목</label>
+            <input type="text" id="title" name="title"
+                   th:value="${notice.title}"
+        </div>
+        <div>
+            <label for="writer" style="font-weight: bolder;">작성자</label>
+            <input type="text" id="writer" name="writer"
+                   th:value="${notice.writer}"
+        </div>
+        <div>
+            <label for="content" style="font-weight: bolder;">작성자</label>
+            <textarea id="content" id="content" name="content" row="15" cols="50">
+                [[${notice.content}]]
+            </textarea>
+        </div>
+        <div style="text-aligin: right;">
+            <input type="hidden" name="seq" th:value="${notice.seq}">
+            <input type="submit" th:value="목록" th:formaction="@{/test/noticeList}">
+            <input type="submit" th:value="저장">
+            <input type="submit" th:value="삭제"
+                   th:formaction="@{/test/delete/{seq}(seq=${notice.seq})}">
+        </div>
+    </form>
+</div>
+    <br/><br/><br/>
+</div>
+    <!-- 스크립트 추가 -->
+<!--    <th:block layout:fragment="userScript">-->
+<!--        <script type="text/javascript" th:src="@{/js/test/test.js}" defer></script>-->
+<!--    </th:block>-->
+</body>
+
+</html>

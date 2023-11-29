@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+
+<head>
+    <th:block layout:fragment="userCss">
+    </th:block>
+</head>
+
+<body>
+<div layout:fragment="content">
+    <div  class="container slider">
+            <h1><a th:href="@{/noticeList}" style="text-decoration:none">게시글 작성</a> </h1>
+
+        <div class="row">
+            <form role="form" th:object="${NoticeDto}" th:action="@{/test/insertProc}"
+            method="post" enctype="multipart/form-data">
+                <div>
+                    <label for="title" style="font-weight: bolder;">제목</label>
+                    <input type="text" th:field="*{title}" id="title" name="title"
+                           placeholder="제목을 입력하세요" >
+                </div>
+                <div>
+                    <label for="writer" style="font-weight: bolder;">작성자</label>
+                    <input type="text" th:field="*{writer}" id="writer" name="writer"
+                           placeholder="작성자를 입력하세요" >
+                </div>
+                <div style="font-weight: bolder;">
+                    <label for="content" >내용</label><br/>
+                    <textarea th:field="*{content}" id="content" name="content" row="15" cols="50"
+                placeholder="내용을 입력하세요" ></textarea>
+                </div>
+<!--                <div style="font-weight: bolder;">-->
+<!--                    <label for="update_time" >등록일</label><br/>-->
+<!--                    <input type="datetime-local" th:field="*{update_time}" id="update_time" name="update_time"></datetime-local>-->
+<!--                </div>-->
+                <div>
+                    <input type="file" name="files">
+                </div>
+                <div style="text-align: right;">
+                    <input type="submit" th:value="목록" th:formaction="@{/test/noticeList}">
+                    <input type="submit" th:value="작성">
+                    <input type="submit" th:value="취소">
+                </div>
+            </form>
+        </div>
+        <br/><br/><br/>
+    </div>
+</div>
+    <!-- 스크립트 추가 -->
+<!--    <th:block layout:fragment="userScript">-->
+<!--        <script type="text/javascript" th:src="@{/js/test/test.js}" defer></script>-->
+<!--    </th:block>-->
+</body>
+
+</html>
