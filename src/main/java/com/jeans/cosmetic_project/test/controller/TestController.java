@@ -19,6 +19,13 @@ public class TestController {
         return "test/test";
     }
     
+    @GetMapping("/myPage")
+    public String myPage() {
+    	
+    	return "test/myPage";
+    	
+    }
+
     @GetMapping("/reviewBoard")
     public String reviewBoard() {
     	
