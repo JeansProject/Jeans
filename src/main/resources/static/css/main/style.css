@@ -19,6 +19,7 @@ img {
 }
 body {
     background-color: rgb(200, 233, 255);
+    padding-top: 10rem;
 }
 
 /* font */

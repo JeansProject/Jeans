@@ -1,35 +1,38 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout/layout}">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
+
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
   <th:block layout:fragment="userCss">
   </th:block>
 </head>
+
 <body>
   <div layout:fragment="content">
-    <main class="slider">
-      <div class="banner">
-        <img src="./images/logo.png" alt="배너이미지">
-        <h3>"당신의 피부는 어떤 날씨인가요?"</h3>
-        <div class="note">
-          <p>세상에 나쁜 날씨는 없듯이,<br>여러분의 모든 피부도 소중합니다.<br>
+    <main class="container">
+      <div id="banner" class="row justify-content-center">
+        <div class="col-5 my-5">
+          <img src="./images/logo.png" class="img-fluid" alt="배너이미지">
+        </div>
+        <div class="row text-center py-3">
+          <h3 class="fs-3 mb-5">"당신의 피부는 어떤 날씨인가요?"</h3>
+          <p class="fs-5">세상에 나쁜 날씨는 없듯이,<br>여러분의 모든 피부도 소중합니다.<br>
             어디서부터 시작해야 할지 모르겠나요?<br>피부맑음이 도와드릴게요 :&#41;</p>
         </div>
       </div>
     </main>
-    <section id="contents">
-      <div class="contentsWrap">
-        <div class="image1">
-          <div class="text">
-            <h2>community</h2>
-            <p>피부 맑음 회원들과 소통하며<br>남성 피부 관리 제품을 추천하는 공간입니다.</p>
+      <div class="row featurette">
+        <div class="col-md-7">
+            <h2 class="featurette-heading fw-normal lh-1">community</h2>
+            <p class="lead">피부 맑음 회원들과 소통하며<br>남성 피부 관리 제품을 추천하는 공간입니다.</p>
             <button name="button">커뮤니티 바로가기</button>
-          </div>
         </div>
+        <div class="col-md-5">
+          <img src="./images/i1.png" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" alt="이미지1">
+        </div>
+      </div>
         <div class="image2">
           <div class="text">
             <h2>best price</h2>
@@ -37,10 +40,7 @@
             <button name="button">최저가 페이지 바로가기</button>
           </div>
         </div>
-      </div>
       <!-- contentsWrap -->
-    </section>
-    <!-- contents -->
   </div>
 
   <div layout:fragment="contentModal">
@@ -49,4 +49,5 @@
   <th:block layout:fragment="userScript">
   </th:block>
 </body>
+
 </html>
