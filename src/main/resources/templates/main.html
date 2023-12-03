@@ -9,11 +9,13 @@
   </th:block>
 </head>
 
+
+
 <body>
   <div layout:fragment="content">
-    <main class="container">
-      <div id="banner" class="row justify-content-center">
-        <div class="col-5 my-5">
+    <main>
+      <div class="row justify-content-center">
+        <div class="col-4 my-5">
           <img src="./images/logo.png" class="img-fluid" alt="배너이미지">
         </div>
         <div class="row text-center py-3">
@@ -22,25 +24,75 @@
             어디서부터 시작해야 할지 모르겠나요?<br>피부맑음이 도와드릴게요 :&#41;</p>
         </div>
       </div>
-    </main>
-      <div class="row featurette">
-        <div class="col-md-7">
-            <h2 class="featurette-heading fw-normal lh-1">community</h2>
-            <p class="lead">피부 맑음 회원들과 소통하며<br>남성 피부 관리 제품을 추천하는 공간입니다.</p>
-            <button name="button">커뮤니티 바로가기</button>
-        </div>
-        <div class="col-md-5">
-          <img src="./images/i1.png" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" alt="이미지1">
-        </div>
-      </div>
-        <div class="image2">
-          <div class="text">
-            <h2>best price</h2>
-            <p>후기가 좋은 제품들을 선정하여 최저가 사이트를 찾아 정리했습니다.</p>
-            <button name="button">최저가 페이지 바로가기</button>
+
+      <div class="container marketing my-5">
+        <div class="row text-center">
+          <div class="col-lg-4">
+            <svg class="bd-placeholder-img rounded-circle m-5" width="140" height="140" xmlns="http://www.w3.org/2000/svg"
+              role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
+              <title>Placeholder</title>
+              <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
+            </svg>
+            <h2 class="fw-normal">건성피부</h2>
+            <p>Some representative placeholder content for the three columns of text below the carousel. This is the
+              first column.</p>
+            <p><a class="btn btn-secondary" href="#">View details »</a></p>
+          </div>
+          <div class="col-lg-4">
+            <svg class="bd-placeholder-img rounded-circle m-5" width="140" height="140" xmlns="http://www.w3.org/2000/svg"
+              role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
+              <title>Placeholder</title>
+              <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
+            </svg>
+            <h2 class="fw-normal">복합성피부</h2>
+            <p>Some representative placeholder content for the three columns of text below the carousel. This is the
+              first column.</p>
+            <p><a class="btn btn-secondary" href="#">View details »</a></p>
+          </div>
+          <div class="col-lg-4">
+            <svg class="bd-placeholder-img rounded-circle m-5" width="140" height="140" xmlns="http://www.w3.org/2000/svg"
+              role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
+              <title>Placeholder</title>
+              <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
+            </svg>
+            <h2 class="fw-normal">지성피부</h2>
+            <p>Some representative placeholder content for the three columns of text below the carousel. This is the
+              first column.</p>
+            <p><a class="btn btn-secondary" href="#">View details »</a></p>
           </div>
         </div>
-      <!-- contentsWrap -->
+
+        <hr class="featurette-divider p-5">
+
+        <div class="row featurette m-3 align-items-center pb-5">
+          <div class="col-md-7">
+            <h2 class="fs-1 fw-bold lh-3">community</h2>
+            <p class="lead">피부 맑음 회원들과 소통하며<br>남성 피부 관리 제품을 추천하는 공간입니다.</p>
+            <p><a class="btn btn-light" href="#">커뮤니티 바로가기 »</a></p>
+          </div>
+          <div class="col-md-5">
+            <img src="./images/i1.png"
+              class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
+              height="500" alt="이미지1">
+          </div>
+        </div>
+          <div class="row featurette m-3 align-items-center py-5">
+            <div class="col-md-7 order-md-2">
+              <h2 class="fs-1 fw-bold lh-3">best price</h2>
+              <p class="lead">후기가 좋은 제품들을 선정하여<br>최저가 사이트를 찾아 정리했습니다.</p>
+              <p><a class="btn btn-light" href="#">최저가 페이지 바로가기 »</a></p>
+            </div>
+            <div class="col-md-5 order-md-1">
+              <img src="./images/i2.png"
+                class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
+                height="500" alt="이미지2">
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+  <!-- contentsWrap -->
+  </main>
   </div>
 
   <div layout:fragment="contentModal">
