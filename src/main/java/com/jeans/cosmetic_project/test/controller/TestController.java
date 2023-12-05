@@ -26,17 +26,17 @@ public class TestController {
     	
     }
 
-    @GetMapping("/reviewBoard")
-    public String reviewBoard() {
-    	
-    	return "test/reviewBoard";
-    	
-    }
-
     @GetMapping("/login")
     public String login() {
     	
     	return "test/login";
+    	
+    }
+
+    @GetMapping("/sign")
+    public String sign() {
+    	
+    	return "test/sign";
     	
     }
    
