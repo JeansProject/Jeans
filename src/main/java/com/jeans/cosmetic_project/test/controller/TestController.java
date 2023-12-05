@@ -33,11 +33,11 @@ public class TestController {
     	
     }
 
-    @GetMapping("/sign")
-    public String sign() {
-    	
-    	return "test/sign";
-    	
-    }
+//    @GetMapping("/sign")
+//    public String sign() {
+//
+//    	return "test/sign";
+//
+//    }
    
 }
