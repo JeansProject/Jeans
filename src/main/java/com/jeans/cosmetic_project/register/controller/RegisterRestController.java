@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class RegisterRestController {
 
-    @PostMapping
+    @PostMapping("/register")
     public ResponseEntity register(@RequestBody RegisterRequestDto registerRequestDto) {
         log.info("register user = {}", registerRequestDto.toString());
         return new ResponseEntity("success", HttpStatus.OK);
