@@ -32,16 +32,16 @@ public class TestRestController {
         return new ResponseEntity(successLoginUser, HttpStatus.OK);
     }
 
-    @PostMapping("/register")
-    public ResponseEntity register(@RequestBody TestDto loginUser) {
-        log.info("loginUserId = {}", loginUser.getId());
-        log.info("loginUserPassword = {}", loginUser.getPassword());
-
-        int registerResult = testServiceImpl.register(loginUser);
-        log.info("result = {}", registerResult);
-
-        return new ResponseEntity(registerResult, HttpStatus.OK);
-    }
+//    @PostMapping("/register")
+//    public ResponseEntity register(@RequestBody TestDto loginUser) {
+//        log.info("loginUserId = {}", loginUser.getId());
+//        log.info("loginUserPassword = {}", loginUser.getPassword());
+//
+//        int registerResult = testServiceImpl.register(loginUser);
+//        log.info("result = {}", registerResult);
+//
+//        return new ResponseEntity(registerResult, HttpStatus.OK);
+//    }
 
     @GetMapping("/get-user-info")
     public ResponseEntity getUserInfoById(@RequestParam("id") String id) {
