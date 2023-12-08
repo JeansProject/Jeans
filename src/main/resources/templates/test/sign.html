@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
+
+<head>
+    <th:block layout:fragment="userCss">
+    </th:block>
+</head>
+
+<body>
+    <!-- Content -->
+    <div layout:fragment="content">
+        <h1>회원가입 페이지</h1>
+        <div class="container slider">
+                <!--<form>-->
+                <!-- <h1>로그인 페이지</h1> -->
+<!--                <!-- <form class="needs-validation" novalidate="">--> -->
+                    <div class="row g-3">
+                      <div class="col-sm-6">
+                        <label for="id" class="form-label">아이디</label>
+                        <input type="text" class="form-control" id="id" placeholder="" value="" required="">
+                        <div class="invalid-feedback">
+                          Valid name is required.
+                        </div>
+                      </div>
+
+                      <div class="col-12">
+                        <label for="username" class="form-label">이름</label>
+                        <div class="input-group has-validation">
+                          <input type="text" class="form-control" id="username" placeholder="Username" required="">
+                        <div class="invalid-feedback">
+                            Your username is required.
+                          </div>
+                        </div>
+                      </div>
+          
+                      <div class="col-12">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="you@example.com">
+                      </div>
+          
+                      <div class="col-12">
+                        <label for="phone" class="form-label">연락처</label>
+                        <input type="text" class="form-control" id="phone" placeholder="1234 Main St" required="">
+                        <div class="invalid-feedback">
+                          Please enter your shipping address.
+                        </div>
+                      </div>
+          
+                      <div class="col-12">
+                        <label for="age" class="form-label">Address 2 <span class="text-body-secondary">나이</span></label>
+                        <input type="text" class="form-control" id="age" placeholder="Apartment or suite">
+                      </div>
+          
+                    <hr class="my-4">
+          
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="save-info">
+                      <label class="form-check-label" for="save-info">Save this information for next time</label>
+                    </div>
+          
+                    <hr class="my-4">
+          
+                    <h4 class="mb-3">피부타입</h4>
+          
+                    <div class="my-3">
+                      <div class="form-check">
+                        <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked="" required="">
+                        <label class="form-check-label" for="credit">건성</label>
+                      </div>
+                      <div class="form-check">
+                        <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required="">
+                        <label class="form-check-label" for="debit">복합성</label>
+                      </div>
+                      <div class="form-check">
+                        <input id="" name="paymentMethod" type="radio" class="form-check-input" required="">
+                        <label class="form-check-label" for="">지성</label>
+                      </div>
+                      <div class="form-check">
+                        <input id="" name="paymentMethod" type="radio" class="form-check-input" required="">
+                        <label class="form-check-label" for="">모름</label>
+                      </div>
+                    </div>
+          
+                    
+          
+                    <hr class="my-4">
+          
+                    <button class="w-100 btn btn-primary btn-lg" type="button" id="registerBtn">저장</button>
+<!--                  </form>-->
+        </div>
+    </div>
+
+    <div layout:fragment="contentModal"></div>
+
+    <!-- 스크립트 추가 -->
+    <th:block layout:fragment="userScript">
+        <script type="text/javascript" th:src="@{/js/test/sign.js}" defer></script>
+    </th:block>
+</body>
+
+</html>

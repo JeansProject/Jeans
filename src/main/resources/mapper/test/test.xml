@@ -1,5 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jeans.cosmetic_project.test.dao.TestDao">
+  <select id="login" parameterType="com.jeans.cosmetic_project.test.dto.TestDto" resultType="com.jeans.cosmetic_project.test.dto.LoginUser">
+    SELECT seq as seq, id as id, name as name
+    FROM users
+    WHERE id = #{id}
+    AND password = #{password}
+  </select>
 
+  <insert id="register" parameterType="com.jeans.cosmetic_project.test.dto.TestDto">
+    INSERT INTO users(id, password, email, phone, name)
+    VALUES(#{id}, #{password}, 'lee@email.com', '01011112222', '이현재2')
+  </insert>
+
+  <select id="getUserInfoById" parameterType="String" resultType="com.jeans.cosmetic_project.test.dto.UserInfoDto">
+    SELECT id as id,
+           password as password,
+           name as name,
+           email as email,
+           phone as phone
+    FROM users
+    WHERE id = #{id}
+  </select>
+
+    <update id="updateUserInfoById" parameterType="com.jeans.cosmetic_project.test.dto.UpdateUserInfoRequestDto">
+        UPDATE users
+        SET name = #{name}, phone = #{phone}
+        WHERE id = #{id}
+    </update>
 </mapper>
