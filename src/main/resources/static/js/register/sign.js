@@ -8,25 +8,47 @@
  */
 
 const registerBtn = document.querySelector('#registerBtn');
-registerBtn.addEventListener('click', function() {
-    const id = document.querySelector('#id').value;
-    // const password = document.querySelector('#password').value;
+registerBtn.addEventListener('click', function () {
     const username = document.querySelector('#username').value;
-    const age = document.querySelector('#age').value;
+    const id = document.querySelector('#id').value;
+    const password = document.querySelector('#password').value;
+    const email = document.querySelector('#email').value;
     const phone = document.querySelector('#phone').value;
+    const age = document.querySelector('#age').value;
+    const birthday = document.querySelector('#birthday').value;
 
-    console.log(id)
-    // console.log(password)
     console.log(username)
-    console.log(age)
+    console.log(id)
+    console.log(password)
+    console.log(email)
     console.log(phone)
+    console.log(age)
+    console.log(birthday)
 
     const registerUser = {
-        "id": id,
-        "username": username,
-        "age": age,
-        "phone": phone
+        'username': username,
+        'id': id,
+        'password': password,
+        'email': email,
+        'phone': phone,
+        'age': age,
+        'birthday': birthday
     }
+
+    fetch('/register', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(registerUser),
+    })
+        .then((response) => response.json())
+        .then(data => {
+            console.log(data)
+        })
+        .catch((e) => {
+            console.log(e);
+        });
 
     console.log(registerUser)
     console.log(registerUser.username)
