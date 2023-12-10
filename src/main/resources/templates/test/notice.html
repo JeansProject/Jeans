@@ -39,6 +39,11 @@
             </div>
                 <div>
     <label style="font-weight: bolder;">첨부파일</label>
+                    <p>
+                        <a th:if="${file}" th:href="@{/test/fileDown/{board_seq}(board_seq=${file.board_seq})}">
+                            [[${file.server_file_name}]]
+                        </a>
+                    </p>
     </div>
     <div>
     <label style="font-weight: bolder;">내용</label>
