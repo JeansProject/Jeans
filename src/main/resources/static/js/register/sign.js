@@ -26,13 +26,13 @@ registerBtn.addEventListener('click', function () {
     console.log(birthday)
 
     const registerUser = {
-        'username': username,
-        'id': id,
-        'password': password,
-        'email': email,
-        'phone': phone,
-        'age': age,
-        'birthday': birthday
+        "username": username,
+        "id": id,
+        "password": password,
+        "email": email,
+        "phone": phone,
+        "age": age,
+        "birthday": birthday
     }
 
     fetch('/register', {
@@ -50,8 +50,11 @@ registerBtn.addEventListener('click', function () {
             console.log(e);
         });
 
-}
     console.log(registerUser)
+    console.log(registerUser.username)
+    console.log(registerUser.phone)
+})
+
 //     fetch('/register', {
 //         method: 'POST',
 //         headers: {
