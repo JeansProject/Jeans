@@ -42,7 +42,11 @@ registerBtn.addEventListener('click', function () {
         },
         body: JSON.stringify(registerUser)
     })
-        .then((response) => response.json())
+        .then((response) => {
+            console.log(response)
+            // response.json()
+            return response.text()
+        })
         .then((data) => {
             console.log(data)
         })
