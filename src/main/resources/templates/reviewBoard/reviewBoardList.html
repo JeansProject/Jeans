@@ -3,13 +3,15 @@
 	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 <meta charset="UTF-8" />
-<script type="text/javascript" src="/js/event.js"></script>
-<script>
-	const message = '[[${message}]]';
-	message && alert(message);
-</script>
+
+<th:block layout:fragment="userCss">
+</th:block>
+<title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 </head>
 <body>
+<div th:replace="layout/fragments/head.html"></div>
 	<!-- <div th:replace="common/header.html"></div> -->
 
 	<div align="center">
@@ -19,58 +21,56 @@
 		<table id="listArea" style="text-align: center">
 			<tr>
 				<th style="width: 100px">글번호</th>
-				<th style="width: 100px">카테고리</th>
 				<th style="width: 300px">글제목</th>
 				<th style="width: 100px">작성자</th>
-				<th style="width: 100px">조회수</th>
 				<th style="width: 150px">작성일</th>
 			</tr>
 			<tr th:each="board : ${ boardList }"
-				th:onclick="|location.href='/board/detail?no=${board.no}'|">
-				<td th:text="${ board.no }"></td>
-				<td th:text="${ board.category.name }"></td>
+				th:onclick="|location.href='/reviewBoard/detail?seq=${board.seq}'|">
+				<td th:text="${ board.seq }"></td>
 				<td th:text="${ board.title }"></td>
-				<td th:text="${ board.writer.nickname }"></td>
-				<td th:text="${ board.count }"></td>
-				<td th:text="${ board.createdDate }"></td>
+				<td th:text="${ board.writer }"></td>
+				<td th:text="${ board.write_time }"></td>
 			</tr>
 		</table>
 	</div>
 
+<!--  -->
 	<!-- 페이징 바 -->
+	<!-- 검색어가 있을때 페이징바 -->
 	<div id="paging" align="center" style="margin-top: 20px;">
 
-		<th:block
+		<th:block  
 			th:if="${ paging.searchCondition != null and paging.searchValue != null }">
 			<!-- 맨 앞으로 이동 -->
 			<button
-				th:onclick="'location.href=\'/board/list?page=1&searchCondition=' + @{${paging.searchCondition}} + '&searchValue=' + @{${paging.searchValue}} + '\''">&lt;&lt;</button>
+				th:onclick="'location.href=\'/reviewBoard/list?page=1&searchCondition=' + @{${paging.searchCondition}} + '&searchValue=' + @{${paging.searchValue}} + '\''">&lt;&lt;</button>
 
 			<!-- 이전 페이지로 이동 -->
 			<button
-				th:onclick="'location.href=\'/board/list?page=' + @{${paging.page - 1}} + '&searchCondition=' + @{${paging.searchCondition}} + '&searchValue=' + @{${paging.searchValue}} + '\''"
+				th:onclick="'location.href=\'/reviewBoard/list?page=' + @{${paging.page - 1}} + '&searchCondition=' + @{${paging.searchCondition}} + '&searchValue=' + @{${paging.searchValue}} + '\''"
 				th:disabled="${ paging.page <= 1 }">&lt;</button>
 
 			<!-- 숫자 버튼 -->
 			<th:block
 				th:each="page : ${ #numbers.sequence(paging.startPage, paging.endPage)}">
 				<button
-					th:onclick="'location.href=\'/board/list?page=' + @{${page}} + '&searchCondition=' + @{${paging.searchCondition}} + '&searchValue=' + @{${paging.searchValue}} + '\''"
+					th:onclick="'location.href=\'/reviewBoard/list?page=' + @{${page}} + '&searchCondition=' + @{${paging.searchCondition}} + '&searchValue=' + @{${paging.searchValue}} + '\''"
 					th:text="${ page }" th:disabled="${ paging.page eq page }">
 				</button>
 			</th:block>
 
 			<!-- 다음 페이지로 이동 -->
 			<button
-				th:onclick="'location.href=\'/board/list?page=' + @{${paging.page + 1}} + '&searchCondition=' + @{${paging.searchCondition}} + '&searchValue=' + @{${searchValue}} + '\''"
+				th:onclick="'location.href=\'/reviewBoard/list?page=' + @{${paging.page + 1}} + '&searchCondition=' + @{${paging.searchCondition}} + '&searchValue=' + @{${searchValue}} + '\''"
 				th:disabled="${ paging.page >= paging.maxPage }">></button>
 
 			<!-- 맨 끝으로 이동 -->
 			<button
-				th:onclick="'location.href=\'/board/list?page=' + @{${paging.maxPage}} + '&searchCondition=' + @{${paging.searchCondition}} + '&searchValue=' + @{${searchValue}} + '\''">>></button>
+				th:onclick="'location.href=\'/reviewBoard/list?page=' + @{${paging.maxPage}} + '&searchCondition=' + @{${paging.searchCondition}} + '&searchValue=' + @{${searchValue}} + '\''">>></button>
 
 		</th:block>
-
+		<!-- 검색어가 없을때 페이징바  -->
 		<th:block
 			th:if="${ paging.searchCondition == null || paging.searchCondition.isEmpty() || paging.searchValue == null || paging.searchValue.isEmpty()}">
 			<!-- 맨 앞으로 이동 -->
@@ -78,33 +78,33 @@
 
 			<!-- 이전 페이지로 이동 -->
 			<button
-				th:onclick="'location.href=\'/board/list?page=' + @{${paging.page - 1}} + '\''"
+				th:onclick="'location.href=\'/reviewBoard/list?page=' + @{${paging.page - 1}} + '\''"
 				th:disabled="${ paging.page <= 1 }">&lt;</button>
 
 			<!-- 숫자 버튼 -->
 			<th:block
 				th:each="page : ${ #numbers.sequence(paging.startPage, paging.endPage)}">
 				<button
-					th:onclick="'location.href=\'/board/list?page=' + @{${page}} + '\''"
+					th:onclick="'location.href=\'/reviewBoard/list?page=' + @{${page}} + '\''"
 					th:text="${ page }" th:disabled="${ paging.page eq page }">
 				</button>
 			</th:block>
 
 			<!-- 다음 페이지로 이동 -->
 			<button
-				th:onclick="'location.href=\'/board/list?page=' + @{${paging.page + 1}} + '\''"
+				th:onclick="'location.href=\'/reviewBoardlist?page=' + @{${paging.page + 1}} + '\''"
 				th:disabled="${ paging.page >= paging.maxPage }">></button>
 
 			<!-- 맨 끝으로 이동 -->
 			<button
-				th:onclick="'location.href=\'/board/list?page=' + @{${paging.maxPage}} + '\''">>></button>
+				th:onclick="'location.href=\'/reviewBoard/list?page=' + @{${paging.maxPage}} + '\''">>></button>
 		</th:block>
 
 	</div>
 
 	<!-- 검색 폼 -->
 	<div align="center">
-		<form id="searchForm" action="/board/list" method="get"
+		<form id="searchForm" action="/reviewBoard/list" method="get"
 			style="display: inline-block">
 			<select id="searchCondition" name="searchCondition">
 				<option value="category"
@@ -121,8 +121,13 @@
 		</form>
 		<button id="writeBoard">작성하기</button>
 	</div>
+				
+		<!-- 스크립트 추가 -->
+	<th:block layout:fragment="userScript">
+		<script type="text/javascript"
+			th:src="@{/js/reviewBoard/reviewBoard.js}" defer></script>
 
-	<!-- <div th:replace="common/footer.html"></div> -->
+	</th:block>
 </body>
 </html>
 
