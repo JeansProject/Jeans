@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper
+	namespace="com.jeans.cosmetic_project.reviewBoard.dao.ReviewBoardMapper">
+
+	<resultMap id="generalBoardResultMap"
+		type="com.jeans.cosmetic_project.reviewBoard.dto.ReviewBoardDTO">
+		<!-- 여기에 매핑할 속성들을 추가 -->
+		<result column="seq" property="seq" />
+		<result column="title" property="title" />
+		<result column="content" property="content" />
+		<result column="writer" property="writer" />
+		<result column="write_time" property="write_time" />
+		<!-- 추가로 필요한 속성들을 계속해서 추가 -->
+	</resultMap>
+	
+	
+	
+		
+	<select id="selectTotalCount" resultType="_int"
+		parameterType="hashmap">
+		SELECT COUNT(*)
+		FROM review_board A
+		<where>
+
+			<if test="searchCondition == 'writer'">
+				AND A.writer LIKE CONCAT('%', #{searchValue}, '%')
+			</if>
+			<if test="searchCondition == 'title'">
+				AND A.title LIKE CONCAT('%', #{searchValue}, '%')
+			</if>
+			<if test="searchCondition == 'content'">
+				AND A.content LIKE CONCAT('%', #{searchValue}, '%')
+			</if>
+		</where>
+	</select>
+
+	<select id="selectBoardList" resultMap="generalBoardResultMap">
+		SELECT
+		A.seq,
+		A.title,
+		A.content,
+		A.writer,
+		A.write_time
+		FROM review_board A
+		<where>
+			<if test="searchCondition == 'writer'">
+				AND A.writer LIKE CONCAT('%', #{searchValue}, '%')
+			</if>
+			<if test="searchCondition == 'title'">
+				AND A.title LIKE CONCAT('%', #{searchValue}, '%')
+			</if>
+			<if test="searchCondition == 'content'">
+				AND A.content LIKE CONCAT('%', #{searchValue}, '%')
+			</if>
+
+		</where>
+		ORDER BY A.seq DESC
+		LIMIT #{startRow}, #{endRow}
+	</select>
+
+	
+
+</mapper>
