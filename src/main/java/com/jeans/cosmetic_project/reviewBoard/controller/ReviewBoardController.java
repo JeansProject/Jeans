@@ -48,6 +48,7 @@ public class ReviewBoardController {
 		log.info("[ReviewBoardController[ serchMap: {}", searchMap);
 
 		//검색기준과 page에 대한 정보를 한번에 담아오기 위해 map을 사용
+		
 		Map<String, Object> reviewBoardListAndPaging= reviewBoardService.selectReviewBoardList(searchMap, page);
 		model.addAttribute("paging",reviewBoardListAndPaging.get("paging"));
 		model.addAttribute("boardList",reviewBoardListAndPaging.get("boardList"));

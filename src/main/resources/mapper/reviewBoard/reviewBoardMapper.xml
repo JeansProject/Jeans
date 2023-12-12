@@ -7,7 +7,7 @@
 
 	<resultMap id="generalBoardResultMap"
 		type="com.jeans.cosmetic_project.reviewBoard.dto.ReviewBoardDTO">
-		<!-- 여기에 매핑할 속성들을 추가 -->
+		<!-- 여기에 매핑할 속성들을 추가22 -->
 		<result column="seq" property="seq" />
 		<result column="title" property="title" />
 		<result column="content" property="content" />
