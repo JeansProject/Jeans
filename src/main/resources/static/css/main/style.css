@@ -27,6 +27,11 @@ body {
     font-style: normal;
 }
 
+/* register */
+.hide {
+    display: none;
+}
+
 /* banner */
 /* .slider {
     background: linear-gradient(rgb(255, 255, 255) 40%, rgb(216, 240, 255));
