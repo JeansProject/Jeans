@@ -72,11 +72,11 @@
             FROM board
         </selectKey>
         INSERT INTO board_files(board_seq, client_file_name, board_type, server_file_name, file_path, user_seq)
-        VALUES (${board_seq}, #{client_file_name}, 'board', #{server_file_name}, #{file_path}, #{seq})
+        VALUES (${board_seq}, #{client_file_name}, 'notice', #{server_file_name}, #{file_path}, #{seq})
     </insert>
 
     <select id="fileNotice" parameterType="int" resultType="com.jeans.cosmetic_project.test.dto.FileDto">
-        SELECT board_seq as board_seq From board_files WHERE board_seq=#{seq}
+        SELECT * From board_files WHERE board_seq=#{seq}
     </select>
 
 </mapper>

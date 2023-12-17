@@ -52,6 +52,7 @@ public class TestController {
 
     @RequestMapping("/notice/{seq}")
     private String noticeContent(@PathVariable("seq") Integer seq, Model model) {
+
         model.addAttribute("notice", noticeServiceImpl.noticeContent(seq));
 
         if(noticeServiceImpl.fileNotice(seq) == null){
@@ -85,12 +86,12 @@ public class TestController {
             String client_file_nameExtension = FilenameUtils.getExtension(client_file_name).toLowerCase();
             File destinationFile; //DB에 저장할 파일 고유명
             String destinationFileName; //절대경로 설정
-            String file_path = "/Users/jaeho/Desktop/study/Jeans";
+            String file_path = "/Users/jaeho/Desktop/study/Jeans/files";
 
             do { //우선 실행 후
                 //고유명 생성
                 destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + client_file_nameExtension;
-                destinationFile = new File(file_path + destinationFileName); //합쳐주기
+                destinationFile = new File(file_path + "/" + destinationFileName); //합쳐주기
             } while (destinationFile.exists());
 
             destinationFile.getParentFile().mkdirs(); //디렉토리
@@ -100,8 +101,8 @@ public class TestController {
 
             FileDto file = new FileDto();
             file.setBoard_seq(notice.getSeq());
-            file.setClient_file_name(destinationFileName);
-            file.setServer_file_name(client_file_name);
+            file.setClient_file_name(client_file_name);
+            file.setServer_file_name(destinationFileName);
             file.setFile_path(file_path);
             file.setUser_seq(loginUser.getSeq());
 
@@ -156,7 +157,7 @@ public class TestController {
 
             //파일을 읽어 스트림에 담기
             try {
-                file = new File(savePath, fileName);
+                file = new File(savePath, server_file_name);
                 in = new FileInputStream(file);
             } catch (FileNotFoundException fe) {
                 skip = true;
@@ -170,20 +171,20 @@ public class TestController {
             response.setHeader("Content-Description", "HTML Generated Data");
 
             if (!skip) {
-                //IE
-                if (client.indexOf("MSIE") != -1) {
-                    response.setHeader("Content-Disposition", "attachment; filename=\""
-                            + java.net.URLEncoder.encode(server_file_name, "UTF-8").replaceAll("\\+", "// ") + "\"");
-                    //IE 11 이상
-                } else if (client.indexOf("Trident") != -1) {
-                    response.setHeader("Content-Disposition", "attachment; filename=\""
-                            + java.net.URLEncoder.encode(server_file_name, "UTF-8").replaceAll("\\+", "\\") + "\"");
-                    //한글 파일명 처리
-                } else {
-                    response.setHeader("Content-Disposition", "attachment; filename=\"" +
-                            new String(server_file_name.getBytes("UTF-8"), "ISO8859_1") + "\"");
-                    response.setHeader("Cotent-Type", "application/octet-stream; charset-utf-8");
-                }
+//                //IE
+//                if (client.indexOf("MSIE") != -1) {
+//                    response.setHeader("Content-Disposition", "attachment; filename=\""
+//                            + java.net.URLEncoder.encode(server_file_name, "UTF-8").replaceAll("\\+", "// ") + "\"");
+//                    //IE 11 이상
+//                } else if (client.indexOf("Trident") != -1) {
+//                    response.setHeader("Content-Disposition", "attachment; filename=\""
+//                            + java.net.URLEncoder.encode(server_file_name, "UTF-8").replaceAll("\\+", "\\") + "\"");
+//                    //한글 파일명 처리
+//                } else {
+//                    response.setHeader("Content-Disposition", "attachment; filename=\"" +
+//                            new String(server_file_name.getBytes("UTF-8"), "ISO8859_1") + "\"");
+//                    response.setHeader("Cotent-Type", "application/octet-stream; charset-utf-8");
+//                }
 
                 response.setHeader("Content-Length", "" + file.length());
                 os = response.getOutputStream();
