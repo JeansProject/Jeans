@@ -19,12 +19,11 @@
 	
 	
 		
-	<select id="selectTotalCount" resultType="_int"
-		parameterType="hashmap">
+	<select id="selectTotalCount" resultType="_int" parameterType="hashmap">
 		SELECT COUNT(*)
 		FROM review_board A
 		<where>
-
+		 		<!-- hashmap에 담아섯 왔는데 왜 안되지?  -->
 			<if test="searchCondition == 'writer'">
 				AND A.writer LIKE CONCAT('%', #{searchValue}, '%')
 			</if>
