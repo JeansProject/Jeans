@@ -12,6 +12,6 @@ public class RegisterController {
 
     @GetMapping("/sign")
     public String sign() {
-        return "test/sign";
+        return "sign/sign";
     }
 }
