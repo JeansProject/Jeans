@@ -1,6 +1,7 @@
 package com.jeans.cosmetic_project.register.controller;
 
 import com.jeans.cosmetic_project.register.dto.RegisterRequestDto;
+import com.jeans.cosmetic_project.register.service.RegisterService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -14,9 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class RegisterRestController {
 
+    private final RegisterService registerServiceImpl;
+
     @PostMapping("/register")
     public ResponseEntity register(@RequestBody RegisterRequestDto registerRequestDto) {
         log.info("register user = {}", registerRequestDto.toString());
-        return new ResponseEntity("success", HttpStatus.OK);
+        registerServiceImpl.register(registerRequestDto);
+        return new ResponseEntity(HttpStatus.OK);
     }
 }

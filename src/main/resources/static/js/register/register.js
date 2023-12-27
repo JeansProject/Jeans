@@ -97,13 +97,13 @@ elInputPasswordRetype.onkeyup = function () {
 
 const registerBtn = document.querySelector('#registerBtn');
 registerBtn.addEventListener('click', function () {
-    const username = document.querySelector('#username').value;
-    const id = document.querySelector('#id').value;
-    const password = document.querySelector('#password').value;
-    const email = document.querySelector('#email').value;
-    const phone = document.querySelector('#phone').value;
-    const age = document.querySelector('#age').value;
-    const birthday = document.querySelector('#birthday').value;
+    const username = document.querySelector('#username').value.trim();
+    const id = document.querySelector('#id').value.trim();
+    const password = document.querySelector('#password').value.trim();
+    const email = document.querySelector('#email').value.trim();
+    const phone = document.querySelector('#phone').value.trim();
+    const age = document.querySelector('#age').value.trim();
+    const birthday = document.querySelector('#birthday').value.trim();
 
     console.log(username)
     console.log(id)
@@ -114,7 +114,7 @@ registerBtn.addEventListener('click', function () {
     console.log(birthday)
 
     const registerUser = {
-        'username': username,
+        'name': username,
         'id': id,
         'password': password,
         'email': email,
@@ -137,6 +137,7 @@ registerBtn.addEventListener('click', function () {
         })
         .then((data) => {
             console.log(data)
+            data.status === 200 ? alert('저장되었습니다.') : alert('저장에 실패하였습니다.');
         })
         .catch((e) => {
             console.log(e);
@@ -148,62 +149,4 @@ registerBtn.addEventListener('click', function () {
     console.log(registerUser.age)
     console.log(registerUser.birthday)
 })
-
-//     fetch('/register', {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json',
-//         },
-//         body: JSON.stringify(userInfo),
-//     })
-//         .then((response) => response.json())
-//         .then(data => {
-//             console.log(data)
-//         })
-//         .catch((e) => {
-//             console.log(e);
-//         });
-
-// })
-
-// const registerBtn = document.querySelector('#registerBtn');
-// registerBtn.addEventListener('click', function() {
-//     register();
-// })
-
-// function register() {
-//     const name = document.querySelector('#name').value;
-//     const id = document.querySelector('#id').value;
-//     const password = document.querySelector('#password').value;
-//     const email = document.querySelector('#email').value;
-//     const age = document.querySelector('#age').value;
-//     const phone = document.querySelector('#phone').value;
-//     const birthday = document.querySelector('#birthday').value;
-
-//     const userInfo = {
-//         'name' : name,
-//         'id' : id,
-//         'password' : password,
-//         'email' : email,
-//         'age' : age,
-//         'phone' : phone,
-//         'birthday' : birthday
-//     }
-
-//     fetch('/register', {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json',
-//         },
-//         body: JSON.stringify(userInfo),
-//     })
-//     .then((response) => response.json())
-//     .then(data => {
-//         console.log(data)
-//     })
-//     .catch((e) => {
-//         console.log(e);
-//     });
-
-// }
 

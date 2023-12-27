@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Slf4j
 public class RegisterController {
 
-    @GetMapping("/sign")
+    @GetMapping("/register")
     public String sign() {
-        return "sign/sign";
+        return "register/register";
     }
 }
