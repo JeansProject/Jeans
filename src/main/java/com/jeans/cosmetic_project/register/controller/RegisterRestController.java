@@ -19,7 +19,8 @@ public class RegisterRestController {
 
     @PostMapping("/register")
     public ResponseEntity register(@RequestBody RegisterRequestDto registerRequestDto) {
+        log.info("register user = {}", registerRequestDto.toString());
         registerServiceImpl.register(registerRequestDto);
-        return new ResponseEntity("success", HttpStatus.OK);
+        return new ResponseEntity(HttpStatus.OK);
     }
 }

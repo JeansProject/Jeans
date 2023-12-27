@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jeans.cosmetic_project.register.dao.RegisterDao">
-    <insert id="register" parameterType="com.jeans.cosmetic_project.register.dto.RegisterRequestDto">
-        INSERT INTO users (id, password, name, age, email, phone, birthday)
-        VALUES (
-                #{id}
-                ,#{password}
-                ,#{name}
-                ,#{age}
-                ,#{email}
-                ,#{phone}
-                ,#{birthday}
-                )
-    </insert>
+  <insert id="register" parameterType="com.jeans.cosmetic_project.register.dto.RegisterRequestDto">
+    INSERT INTO users (id, password, name, age, email, phone, birthday)
+    VALUES
+        (
+        #{id}
+        ,#{password}
+        ,#{name}
+        ,#{age}
+        ,#{email}
+        ,#{phone}
+        ,#{birthday}
+        )
+  </insert>
 </mapper>
