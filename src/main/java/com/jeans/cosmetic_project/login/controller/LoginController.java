@@ -7,10 +7,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -27,9 +24,9 @@ public class LoginController {
     }
 
     @PostMapping("/verify")
-    public String verifyUser(@RequestBody LoginRequestDto loginRequestDto, Model model) {
-        User loginUser = loginServiceImpl.login(loginRequestDto);
+    public String verifyUser(@ModelAttribute LoginRequestDto loginRequestDto, Model model) {
+        User loginUser = loginServiceImpl.verifyUser(loginRequestDto);
         model.addAttribute("loginUser", loginUser);
-        return "/main";
+        return "redirect:/main";
     }
 }

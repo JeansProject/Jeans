@@ -14,13 +14,13 @@
         <div class="container slider">
                 <!--<form>-->
                 <!-- <h1>로그인 페이지</h1> -->
-                <form>
+                <form th:action="@{/login/verify}" th:method="post">
                     <div class="form-floating gap-2 col-8 mx-auto">
-                        <input type="email" class="form-control" id="id" placeholder="name@example.com">
+                        <input type="text" class="form-control" id="id" placeholder="" name="id">
                         <label for="id">ID</label>
                     </div>
                     <div class="form-floating gap-2 col-8 mx-auto">
-                        <input type="passward" class="form-control" id="password" placeholder="Password">
+                        <input type="password" class="form-control" id="password" placeholder="" name="password">
                         <label for="password">Password</label>
                     </div>
                     <div class="checkbox mb-3 gap-2 col-8 mx-auto">
@@ -31,7 +31,7 @@
                     </div>
 
                     <div class="d-grid gap-2 col-6 mx-auto">
-                        <button class="btn btn-primary" type="button" id="loginBtn">login</button>
+                        <button class="btn btn-primary" type="submit" id="loginBtn">login</button>
                         <button class="btn btn-primary" type="button" th:href="@{/register}">sign</button>
                     </div>
                 </form>
@@ -42,7 +42,7 @@
 
     <!-- 스크립트 추가 -->
     <th:block layout:fragment="userScript">
-        <script type="text/javascript" th:src="@{/js/test/myPage.js}" defer></script>
+        <script type="text/javascript" th:src="@{/js/login/login.js}" defer></script>
     </th:block>
 </body>
 

@@ -5,5 +5,5 @@ import com.jeans.cosmetic_project.user.dto.User;
 
 public interface LoginService {
 
-    User login(LoginRequestDto loginRequestDto);
+    User verifyUser(LoginRequestDto loginRequestDto);
 }

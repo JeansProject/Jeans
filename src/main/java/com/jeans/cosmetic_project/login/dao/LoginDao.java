@@ -5,7 +5,7 @@ import com.jeans.cosmetic_project.user.dto.User;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
-public interface LoginServiceDao {
+public interface LoginDao {
 
-    User login(LoginRequestDto loginRequestDto);
+    User verifyUser(LoginRequestDto loginRequestDto);
 }

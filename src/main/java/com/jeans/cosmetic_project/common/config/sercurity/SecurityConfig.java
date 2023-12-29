@@ -35,8 +35,10 @@ public class SecurityConfig {
 //            );
         http
             .authorizeHttpRequests()
-            .antMatchers("/")
-            .permitAll();
+            .antMatchers("/**")
+            .permitAll()
+            .and()
+            .csrf().disable();
         return http.build();
     }
 

@@ -1,17 +1,20 @@
 const login = {
-  init() {
-    const loginBtn = document.querySelector('#loginBtn');
-    this.bindEvent.bind(this);
+
+  init: function() {
+    // this.bindEvent();
   },
 
-  bindEvent() {
-    this.login();
+  bindEvent: function() {
+    console.log(document.querySelector('#loginBtn'))
+    document.querySelector('#loginBtn').addEventListener('click', this.login.bind(this));
   },
 
-  login() {
+  login: function() {
+    console.log('login btn clicked');
     const loginUser = this.getLoginInfo();
+    console.log(loginUser);
 
-    fetch(`/verify`, {
+    fetch(`/login/verify`, {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
@@ -27,9 +30,9 @@ const login = {
     })
   },
 
-  getLoginInfo() {
-    const id = document.querySelector('#id');
-    const password = document.querySelector('#password');
+  getLoginInfo: function() {
+    const id = document.querySelector('#id').value;
+    const password = document.querySelector('#password').value;
 
     const loginUser = {
       id,

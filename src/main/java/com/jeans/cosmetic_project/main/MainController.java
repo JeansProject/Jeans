@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Slf4j
 public class MainController {
 
-    @GetMapping("/")
+    @GetMapping("/main")
     public String Main() {
         log.info("call main page");
         return "main";
