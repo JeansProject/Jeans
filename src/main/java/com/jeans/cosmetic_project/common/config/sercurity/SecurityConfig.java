@@ -16,7 +16,8 @@ public class SecurityConfig {
 
     private static final String[] PERMIT_ALL_PATTERNS = new String[] {
         "/",
-        "/login"
+        "/login",
+        "/register/**"
     };
 
     @Bean
@@ -32,6 +33,7 @@ public class SecurityConfig {
                             .toArray(AntPathRequestMatcher[]::new)
                     )
                     .permitAll()
+                    .requestMatchers(new AntPathRequestMatcher("/my-page")).hasRole("USER")
                     .anyRequest().authenticated()
             );
         return http.build();
