@@ -16,26 +16,30 @@ public class SecurityConfig {
 
     private static final String[] PERMIT_ALL_PATTERNS = new String[] {
         "/",
-        "/login",
+        "/login/**",
         "/register/**"
     };
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
 
+//        http
+//            .authorizeHttpRequests(request ->
+//                request
+//                    .requestMatchers(
+//                        Stream
+//                            .of(PERMIT_ALL_PATTERNS)
+//                            .map(AntPathRequestMatcher::new)
+//                            .toArray(AntPathRequestMatcher[]::new)
+//                    )
+//                    .permitAll()
+//                    .requestMatchers(new AntPathRequestMatcher("/my-page")).hasRole("USER")
+//                    .anyRequest().authenticated()
+//            );
         http
-            .authorizeHttpRequests(request ->
-                request
-                    .requestMatchers(
-                        Stream
-                            .of(PERMIT_ALL_PATTERNS)
-                            .map(AntPathRequestMatcher::new)
-                            .toArray(AntPathRequestMatcher[]::new)
-                    )
-                    .permitAll()
-                    .requestMatchers(new AntPathRequestMatcher("/my-page")).hasRole("USER")
-                    .anyRequest().authenticated()
-            );
+            .authorizeHttpRequests()
+            .antMatchers("/")
+            .permitAll();
         return http.build();
     }
 

@@ -16,12 +16,12 @@
                 <!-- <h1>로그인 페이지</h1> -->
                 <form>
                     <div class="form-floating gap-2 col-8 mx-auto">
-                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                        <label for="floatingInput">Email address</label>
+                        <input type="email" class="form-control" id="id" placeholder="name@example.com">
+                        <label for="id">ID</label>
                     </div>
                     <div class="form-floating gap-2 col-8 mx-auto">
-                        <input type="passward" class="form-control" id="floatingPassword" placeholder="Password">
-                        <label for="floatingPassword">Password</label>
+                        <input type="passward" class="form-control" id="password" placeholder="Password">
+                        <label for="password">Password</label>
                     </div>
                     <div class="checkbox mb-3 gap-2 col-8 mx-auto">
                         <label>
@@ -31,8 +31,8 @@
                     </div>
 
                     <div class="d-grid gap-2 col-6 mx-auto">
-                        <button class="btn btn-primary" type="button">login</button>
-                        <button class="btn btn-primary" type="button">sign</button>
+                        <button class="btn btn-primary" type="button" id="loginBtn">login</button>
+                        <button class="btn btn-primary" type="button" th:href="@{/register}">sign</button>
                     </div>
                 </form>
         </div>
