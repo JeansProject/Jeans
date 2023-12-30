@@ -1,7 +1,7 @@
 const login = {
 
   init: function() {
-    // this.bindEvent();
+    this.bindEvent();
   },
 
   bindEvent: function() {
@@ -21,9 +21,14 @@ const login = {
       },
       body: JSON.stringify(loginUser)
     })
-    .then(response => response.text())
+    .then(response => {
+      console.log(response)
+      return response.text()
+    })
     .then(data => {
       console.log(data);
+      if(data) location.href = '/main';
+      else return alert('로그인 정보를 확인하세요.');
     })
     .catch(error => {
       console.log(error)

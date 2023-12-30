@@ -131,22 +131,12 @@ registerBtn.addEventListener('click', function () {
         body: JSON.stringify(registerUser)
     })
         .then((response) => {
-            console.log(response)
-            // response.json()
-            return response.text()
-        })
-        .then((data) => {
-            console.log(data)
-            data.status === 200 ? alert('저장되었습니다.') : alert('저장에 실패하였습니다.');
+            alert('회원가입이 완료되었습니다. 메인페이지로 이동합니다.');
+            location.href=`/main`;
         })
         .catch((e) => {
+            alert('저장에 실패하였습니다.');
             console.log(e);
         });
-
-    console.log(registerUser)
-    console.log(registerUser.username)
-    console.log(registerUser.phone)
-    console.log(registerUser.age)
-    console.log(registerUser.birthday)
 })
 

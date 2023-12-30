@@ -6,6 +6,7 @@
     SELECT
         seq as seq,
         id as id,
+        password as password,
         `name` as name,
         age as age,
         email as email,
@@ -15,7 +16,5 @@
         users
     WHERE
         id = #{id}
-    AND
-        password = #{password}
   </select>
 </mapper>

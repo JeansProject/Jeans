@@ -1,10 +1,12 @@
 package com.jeans.cosmetic_project.user.dto;
 
+import com.jeans.cosmetic_project.user.enums.UserRole;
 import lombok.Data;
 
 @Data
 public class User {
 
+    private UserRole role;
     private String id;
     private String password;
     private String name;
