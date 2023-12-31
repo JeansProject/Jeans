@@ -17,9 +17,11 @@ public class RegisterRequestDto {
     private String phone;
     private String birthday;
 
+    private String encodedPassword;
+
     @Builder
     public RegisterRequestDto(String id, String password, String name, int age, String email,
-        String phone, String birthday) {
+        String phone, String birthday, String encodedPassword) {
         this.id = id;
         this.password = password;
         this.name = name;
@@ -27,5 +29,6 @@ public class RegisterRequestDto {
         this.email = email;
         this.phone = phone;
         this.birthday = birthday;
+        this.encodedPassword = encodedPassword;
     }
 }

@@ -14,7 +14,7 @@
         <div class="container slider">
                 <!--<form>-->
                 <!-- <h1>로그인 페이지</h1> -->
-                <form th:action="@{/login/verify}" th:method="post">
+<!--                <form th:action="@{/login/verify}" th:method="post">-->
                     <div class="form-floating gap-2 col-8 mx-auto">
                         <input type="text" class="form-control" id="id" placeholder="" name="id">
                         <label for="id">ID</label>
@@ -31,10 +31,11 @@
                     </div>
 
                     <div class="d-grid gap-2 col-6 mx-auto">
-                        <button class="btn btn-primary" type="submit" id="loginBtn">login</button>
+<!--                        <button class="btn btn-primary" type="submit" id="loginBtn">login</button>-->
+                        <button class="btn btn-primary" type="button" id="loginBtn">login</button>
                         <button class="btn btn-primary" type="button" th:href="@{/register}">sign</button>
                     </div>
-                </form>
+<!--                </form>-->
         </div>
     </div>
 

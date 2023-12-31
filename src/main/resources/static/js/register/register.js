@@ -105,14 +105,6 @@ registerBtn.addEventListener('click', function () {
     const age = document.querySelector('#age').value.trim();
     const birthday = document.querySelector('#birthday').value.trim();
 
-    console.log(username)
-    console.log(id)
-    console.log(password)
-    console.log(email)
-    console.log(phone)
-    console.log(age)
-    console.log(birthday)
-
     const registerUser = {
         'name': username,
         'id': id,
@@ -133,20 +125,17 @@ registerBtn.addEventListener('click', function () {
         .then((response) => {
             console.log(response)
             // response.json()
-            return response.text()
+            // return response.text()
+            alert('회원가입이 완료되었습니다.');
         })
-        .then((data) => {
-            console.log(data)
-            data.status === 200 ? alert('저장되었습니다.') : alert('저장에 실패하였습니다.');
-        })
+        // .then((data) => {
+        //     console.log(data)
+        //     data.status === 200 ? alert('저장되었습니다.') : alert('저장에 실패하였습니다.');
+        // })
         .catch((e) => {
             console.log(e);
+            return alert('회원가입에 실패하였습니다.');
         });
 
-    console.log(registerUser)
-    console.log(registerUser.username)
-    console.log(registerUser.phone)
-    console.log(registerUser.age)
-    console.log(registerUser.birthday)
 })
 

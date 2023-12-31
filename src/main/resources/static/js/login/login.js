@@ -1,7 +1,7 @@
 const login = {
 
   init: function() {
-    // this.bindEvent();
+    this.bindEvent();
   },
 
   bindEvent: function() {
@@ -24,9 +24,12 @@ const login = {
     .then(response => response.text())
     .then(data => {
       console.log(data);
+      if(!data) return alert('아이디와 비밀번호를 확인하세요');
+      location.href = '/main';
     })
     .catch(error => {
       console.log(error)
+      return alert('아이디와 비밀번호를 확인하세요');
     })
   },
 

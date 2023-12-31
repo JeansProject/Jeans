@@ -7,6 +7,7 @@ public class User {
 
     private String id;
     private String password;
+    private String encodedPassword;
     private String name;
     private int age;
     private String email;

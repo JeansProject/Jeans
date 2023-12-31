@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -35,9 +36,16 @@ public class SecurityConfig {
 //            );
         http
             .authorizeHttpRequests()
-            .antMatchers("/**")
+            .antMatchers("/")
+            .permitAll()
+            .antMatchers("/main")
+            .permitAll()
+            .antMatchers("/register")
+            .permitAll()
+            .antMatchers("/login/**")
             .permitAll()
             .and()
+            .formLogin().disable()
             .csrf().disable();
         return http.build();
     }
@@ -46,5 +54,10 @@ public class SecurityConfig {
     public WebSecurityCustomizer webSecurityCustomizer() {
         return (web) -> web.ignoring()
             .antMatchers("/css/**", "/js/**", "/images/**", "/webjars/**", "/favicon.*");
+    }
+
+    @Bean
+    public BCryptPasswordEncoder bCryptPasswordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 }
