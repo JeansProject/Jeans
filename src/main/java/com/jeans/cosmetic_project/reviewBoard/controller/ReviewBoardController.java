@@ -40,6 +40,7 @@ public class ReviewBoardController {
 		Model model){
 		
 		log.info("[ReviewBoardController[ page: {}", page);
+		log.info("[ReviewBoardController[ searchValue: {}", searchValue);
 		
 		Map<String,String> searchMap= new HashMap<>();
 		searchMap.put("searchCondition",  searchCondition);
@@ -53,7 +54,7 @@ public class ReviewBoardController {
 		model.addAttribute("paging",reviewBoardListAndPaging.get("paging"));
 		model.addAttribute("boardList",reviewBoardListAndPaging.get("boardList"));
 				
-				;
+				
 		return "reviewBoard/reviewBoardList";
 	}
 	
@@ -64,14 +65,19 @@ public class ReviewBoardController {
     	return "reviewBoard/newReviewBoard";
     	
     }
-	 @GetMapping("detatil")
+	 @GetMapping("detail")
 	 public String ReviewBoardDetatil(
 			 @RequestParam int seq, Model model ) {
-		 
+		 //게시판 클릭했을떄 seq 를 타고 db에 요청할 예정,. 하 이 거 원래 활뽑는순간 했어야했는데 .
+		 log.info("[reviewBoardController]seq:{}", seq);
 		 ReviewBoardDTO ReviewBoardDetail= reviewBoardService.selectBoardDetatil(seq);
+		 log.info("[reviewBoardController]ReviewBoardDetail:{}", ReviewBoardDetail);
+		 model.addAttribute("reviewBoard",ReviewBoardDetail);
+		 //서비스 로직에서 연산하고 나온값에 대한 처리 
 		 
+		 /*DTO 까지 넘어오는거 확인 뷰 템플릿 그리고 거기다가 뿌리는거 연습해야함 .*/
 		 
-		 return null;
+		 return "reviewBoard／reviewBoardDetail";
 	 }
 
 }

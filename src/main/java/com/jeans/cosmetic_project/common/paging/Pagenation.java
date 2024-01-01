@@ -38,7 +38,7 @@ public class Pagenation {
         }
 
         /* 조회할 시작 번호와 마지막 행 번호를 계산 */
-        startRow = (page - 1) * limit + 1;
+        startRow = (page - 1) * limit;
         endRow = startRow + limit - 1;
 
         /*계산을 해서 나온 각각의 세팅값을 객체를 만들어 반환*/
