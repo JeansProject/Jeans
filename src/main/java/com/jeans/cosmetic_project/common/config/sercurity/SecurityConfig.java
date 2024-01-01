@@ -35,18 +35,29 @@ public class SecurityConfig {
 //                    .anyRequest().authenticated()
 //            );
         http
-            .authorizeHttpRequests()
-            .antMatchers("/")
-            .permitAll()
-            .antMatchers("/main")
-            .permitAll()
-            .antMatchers("/register")
-            .permitAll()
-            .antMatchers("/login/**")
-            .permitAll()
-            .and()
-            .formLogin().disable()
-            .csrf().disable();
+                .sessionManagement()
+//                .maximumSessions(1)
+//                .maxSessionsPreventsLogin(false)
+//                .expiredUrl("/login")
+                .invalidSessionUrl("/login")
+                .and()
+                .authorizeHttpRequests()
+                .antMatchers("/")
+                .permitAll()
+                .antMatchers("/main")
+                .permitAll()
+                .antMatchers("/register")
+                .permitAll()
+                .antMatchers("/login/**")
+                .permitAll()
+                .antMatchers("/reviewBoard/**", "/my-page/**").hasAnyRole("ADMIN", "USER")
+                .anyRequest().authenticated()
+                .and()
+                .formLogin().disable()
+                .csrf().disable()
+                .cors() //.configurationSource(corsConfigurationSource())
+                .and()
+                .httpBasic().disable();
         return http.build();
     }
 
