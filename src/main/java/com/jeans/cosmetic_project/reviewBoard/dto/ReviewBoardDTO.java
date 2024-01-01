@@ -12,6 +12,9 @@ public class ReviewBoardDTO {
  	private String content;
  	private String writer;
  	private Date write_time;
+ 	private Date updated_time;
+ 	private int count;
+ 	
  	
 	
 	
