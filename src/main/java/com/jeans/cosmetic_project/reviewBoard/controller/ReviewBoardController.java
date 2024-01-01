@@ -77,7 +77,7 @@ public class ReviewBoardController {
 		 
 		 /*DTO 까지 넘어오는거 확인 뷰 템플릿 그리고 거기다가 뿌리는거 연습해야함 .*/
 		 
-		 return "reviewBoard／reviewBoardDetail";
+		 return "reviewBoard/reviewBoardDetail";
 	 }
 
 }
