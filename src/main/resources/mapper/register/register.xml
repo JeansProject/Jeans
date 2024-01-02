@@ -6,7 +6,7 @@
     VALUES
         (
         #{id}
-        ,#{password}
+        ,#{encodedPassword}
         ,#{name}
         ,#{age}
         ,#{email}

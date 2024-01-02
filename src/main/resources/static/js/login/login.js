@@ -21,17 +21,15 @@ const login = {
       },
       body: JSON.stringify(loginUser)
     })
-    .then(response => {
-      console.log(response)
-      return response.text()
-    })
+    .then(response => response.text())
     .then(data => {
       console.log(data);
-      if(data) location.href = '/main';
-      else return alert('로그인 정보를 확인하세요.');
+      if(!data) return alert('아이디와 비밀번호를 확인하세요');
+      location.href = '/main';
     })
     .catch(error => {
       console.log(error)
+      return alert('아이디와 비밀번호를 확인하세요');
     })
   },
 

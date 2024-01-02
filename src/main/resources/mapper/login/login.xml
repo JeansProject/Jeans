@@ -6,7 +6,7 @@
     SELECT
         seq as seq,
         id as id,
-        password as password,
+        password as encodedPassword,
         `name` as name,
         age as age,
         email as email,

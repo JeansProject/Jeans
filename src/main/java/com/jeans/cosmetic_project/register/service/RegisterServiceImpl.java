@@ -20,7 +20,7 @@ public class RegisterServiceImpl implements RegisterService{
     @Transactional(rollbackFor = Exception.class)
     public void register(RegisterRequestDto registerRequestDto) {
         String encodedPassword = bCryptPasswordEncoder.encode(registerRequestDto.getPassword());
-        registerRequestDto.setPassword(encodedPassword);
+        registerRequestDto.setEncodedPassword(encodedPassword);
         registerDao.register(registerRequestDto);
     }
 }

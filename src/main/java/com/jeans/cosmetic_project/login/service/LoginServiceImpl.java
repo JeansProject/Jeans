@@ -15,13 +15,12 @@ public class LoginServiceImpl implements LoginService{
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public User verifyUser(LoginRequestDto loginRequestDto) {
-        User loginUser = null;
         User user = loginDao.verifyUser(loginRequestDto);
+        User verifiedUser;
 
-        if(user != null && bCryptPasswordEncoder.matches(loginRequestDto.getPassword(), user.getPassword())) {
-            loginUser = user;
-        }
+        if(user != null && bCryptPasswordEncoder.matches(loginRequestDto.getPassword(), user.getEncodedPassword())) verifiedUser = user;
+        else verifiedUser = null;
 
-        return loginUser;
+        return verifiedUser;
     }
 }

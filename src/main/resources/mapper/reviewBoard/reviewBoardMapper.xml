@@ -13,18 +13,22 @@
 		<result column="content" property="content" />
 		<result column="writer" property="writer" />
 		<result column="write_time" property="write_time" />
+		<result column="updated_time" property="updated_time" />
+		<result column="count" property="count" />
 		<!-- 추가로 필요한 속성들을 계속해서 추가 -->
 	</resultMap>
 	
-	
-	
-		
+
+
+
+
+
 	<select id="selectTotalCount" resultType="_int"
 		parameterType="hashmap">
 		SELECT COUNT(*)
 		FROM review_board A
 		<where>
-
+			<!-- hashmap에 담아섯 왔는데 왜 안되지? -->
 			<if test="searchCondition == 'writer'">
 				AND A.writer LIKE CONCAT('%', #{searchValue}, '%')
 			</if>
@@ -37,7 +41,7 @@
 		</where>
 	</select>
 
-	<select id="selectBoardList" resultMap="generalBoardResultMap">
+	<select id="selectBoardList" resultMap="generalBoardResultMap" parameterType= "com.jeans.cosmetic_project.common.paging.SelectCriteria">
 		SELECT
 		A.seq,
 		A.title,
@@ -61,6 +65,28 @@
 		LIMIT #{startRow}, #{endRow}
 	</select>
 
-	
+
+    <update id="incrementBoardCount">
+        UPDATE 
+            review_board A  <!-- update 테이블  -->
+        SET A.count = A.count + 1  <!-- 2 -->
+        WHERE A.seq = #{ seq };
+    </update>
+    
+    
+    <select id="selectBoardDetail" resultMap="generalBoardResultMap" >
+	SELECT
+	A.title,
+	A.content,
+	A.writer,
+	A.write_time,
+	A.count
+	FROM review_board A
+	WHERE A.seq=#{seq}
+       
+    </select>
+    
+    
+  
 
 </mapper>

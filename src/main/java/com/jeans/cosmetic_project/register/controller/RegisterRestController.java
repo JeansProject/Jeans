@@ -2,6 +2,7 @@ package com.jeans.cosmetic_project.register.controller;
 
 import com.jeans.cosmetic_project.register.dto.RegisterRequestDto;
 import com.jeans.cosmetic_project.register.service.RegisterService;
+import com.jeans.cosmetic_project.user.dto.User;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

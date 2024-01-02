@@ -63,10 +63,13 @@ public class ReviewBoardService {
 	public ReviewBoardDTO selectBoardDetatil(int seq) {
 
 		/* 조회수 업데이트 로직 추가 예정 */
+		/*1. 조회수 증가 로직 */
+		int result= reviewBoardMapper.incrementBoardCount(seq);
 
-		/* select 절 */
-
+		/* select 절
+		 * 2. 게시글 상세 내용 조회 후 리턴  */
 		return reviewBoardMapper.selectBoardDetail(seq);
+		
 	}
 
 }

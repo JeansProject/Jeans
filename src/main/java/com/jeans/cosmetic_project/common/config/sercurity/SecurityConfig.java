@@ -35,28 +35,29 @@ public class SecurityConfig {
 //                    .anyRequest().authenticated()
 //            );
         http
-            .authorizeHttpRequests()
-            .antMatchers("/")
-            .permitAll()
-            .antMatchers("/main")
-            .permitAll()
-            .antMatchers("/register")
-            .permitAll()
-            .antMatchers("/login/**")
-            .permitAll()
-            .antMatchers("/my-page/**").hasAnyRole("ADMIN", "USER")
-            .anyRequest().authenticated();
-
-        http
-            .formLogin().disable()
-            .csrf().disable();
-
-//        http
-//            .formLogin()
-//            .loginPage("/login") // 로그인 페이지 경로 설정
-//            .loginProcessingUrl("/login/verify") // 시큐리티가 login 요청 보낼 경로
-//            .permitAll();
-
+                .sessionManagement()
+//                .maximumSessions(1)
+//                .maxSessionsPreventsLogin(false)
+//                .expiredUrl("/login")
+                .invalidSessionUrl("/login")
+                .and()
+                .authorizeHttpRequests()
+                .antMatchers("/")
+                .permitAll()
+                .antMatchers("/main")
+                .permitAll()
+                .antMatchers("/register")
+                .permitAll()
+                .antMatchers("/login/**")
+                .permitAll()
+                .antMatchers("/reviewBoard/**", "/my-page/**").hasAnyRole("ADMIN", "USER")
+                .anyRequest().authenticated()
+                .and()
+                .formLogin().disable()
+                .csrf().disable()
+                .cors() //.configurationSource(corsConfigurationSource())
+                .and()
+                .httpBasic().disable();
         return http.build();
     }
 
