@@ -4,14 +4,15 @@
 
   <select id="verifyUser" parameterType="com.jeans.cosmetic_project.login.dto.LoginRequestDto" resultType="com.jeans.cosmetic_project.user.dto.User">
     SELECT
-        seq as seq,
+        `seq` as seq,
         id as id,
         password as encodedPassword,
         `name` as name,
         age as age,
         email as email,
         phone as phone,
-        birthday as birthday
+        birthday as birthday,
+        `role` as role
     FROM
         users
     WHERE
