@@ -18,12 +18,12 @@ public class MyPageController {
 
     private final MyPageService myPageServiceImpl;
 
-    @GetMapping
+    @GetMapping("/{id}")
     public String myPage(Model model, @PathVariable("id") String id) {
 
         User user = myPageServiceImpl.findUserById(id);
-        model.addAttribute("user", user);
-        return "/myPage/myPage";
+        model.addAttribute("loginUser", user);
+        return "myPage/myPage";
     }
 
 }

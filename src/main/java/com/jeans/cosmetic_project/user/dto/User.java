@@ -7,6 +7,7 @@ import lombok.Data;
 public class User {
 
     private UserRole role;
+    private int seq;
     private String id;
     private String password;
     private String encodedPassword;

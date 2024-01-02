@@ -18,11 +18,11 @@
 				<h4 class="mb-3 d-flex justify-content-center">My Page</h4>
 
 				<!--<form>-->
-				<form class="needs-validation" novalidate>
+<!--				<form class="needs-validation" novalidate>-->
 					<div class="row mt-5 mx-auto gy-2">
 						<div class="col-sm-6">
 							<div class="form-floating">
-								<input type="text" class="form-control" id="id">
+								<input type="text" class="form-control" id="id" th:value="${loginUser.id}">
 								<label for="">아이디</label>
 							</div>
 						</div>
@@ -38,28 +38,26 @@
 						<div class="row mt-3 mx-auto gy-2">
 							<div class="col-sm-4">
 								<div class="form-floating">
-									<input type="text" class="form-control" id="name">
+									<input type="text" class="form-control" id="name" th:value="${loginUser.name}">
 									<label for="">이름</label>
 								</div>
 							</div>
 							<div class="col-sm-4">
 								<div class="form-floating">
-									<input type="text" class="form-control" id="email">
+									<input type="text" class="form-control" id="email" th:value="${loginUser.email}">
 									<label for="">이메일</label>
 								</div>
 							</div>
 							<div class="col-sm-4">
 								<div class="form-floating">
-									<input type="text" class="form-control" id="phone">
+									<input type="text" class="form-control" id="phone" th:value="${loginUser.phone}">
 									<label for="">전화번호</label>
 								</div>
 							</div>
 						</div>
-				</form>
+<!--				</form>-->
+					</div>
 			</div>
-
-
-
 		</div>
 	</div>
 
@@ -67,7 +65,7 @@
 
 	<!-- 스크립트 추가 -->
 	<th:block layout:fragment="userScript">
-		<script type="text/javascript" th:src="@{/js/test/myPage.js}" defer></script>
+		<script type="text/javascript" th:src="@{/js/myPage/myPage.js}" defer></script>
 	</th:block>
 </body>
 
