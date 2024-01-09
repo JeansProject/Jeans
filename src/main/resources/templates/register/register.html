@@ -10,12 +10,12 @@
 <body>
     <!-- Content -->
     <div layout:fragment="content">
-        <h1>회원가입 페이지</h1>
+        <!-- <h1>회원가입 페이지</h1> -->
         <div class="container slider">
                 <!--<form>-->
                 <!-- <h1>로그인 페이지</h1> -->
 <!--                <form class="needs-validation" novalidate="">-->
-          <div class="row g-3">
+          <div class="row g-4">
             <div class="col-sm-12">
               <label for="username" class="form-label">이름</label>
               <input type="text" class="form-control" id="username" placeholder="" value="" required="">
@@ -26,11 +26,23 @@
               <input type="text" class="form-control" id="id" placeholder="아이디를 입력해주세요" value="" required="">
             </div>
 
+            <div class="success-message text-primary hide">사용할 수 있는 아이디입니다.</div>
+            <div class="failure-message text-danger hide">4~12글자의 아이디를 입력해주세요.</div>
+            <div class="failure-message2 text-danger hide">영어 또는 숫자만 가능합니다.</div>
+
             <div class="col-sm-12">
               <label for="password" class="form-label">비밀번호</label>
-              <input type="text" class="form-control" id="password" placeholder="비밀번호를 입력해주세요" value="" required="">
+              <input type="password" class="form-control" id="password" placeholder="비밀번호를 입력해주세요" value="" required="">
             </div>
 
+            <div class="strongPassword-message hide">8글자 이상, 영문, 숫자, 특수문자를 사용해주세요.</div>
+
+            <div class="col-sm-12">
+              <label for="password-retype" class="form-label">비밀번호 확인</label>
+              <input type="password" class="form-control" id="password-retype" placeholder="비밀번호를 다시 한번 입력해주세요" value="" required="">
+            </div>
+
+            <div class="mismatch-message hide">비밀번호가 일치하지 않습니다.</div>
             
             <div class="col-12">
               <label for="email" class="form-label">Email</label>
@@ -92,7 +104,7 @@
 
     <!-- 스크립트 추가 -->
     <th:block layout:fragment="userScript">
-        <script type="text/javascript" th:src="@{/js/register/sign.js}" defer></script>
+        <script type="text/javascript" th:src="@{/js/register/register.js}" defer></script>
     </th:block>
 </body>
 
