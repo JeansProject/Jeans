@@ -71,5 +71,11 @@ public class ReviewBoardService {
 		return reviewBoardMapper.selectBoardDetail(seq);
 		
 	}
+	
+	/*게시글 작성 insert 반환값을 딱히 없다.*/
+	public void reviewBoardRegist(ReviewBoardDTO reviewBoardDTO) {
+		
+		reviewBoardMapper.reviewBoardRegist(reviewBoardDTO);
+	}
 
 }

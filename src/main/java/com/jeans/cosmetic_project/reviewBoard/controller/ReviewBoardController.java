@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -59,12 +60,23 @@ public class ReviewBoardController {
 	}
 	
 
-	 @GetMapping("/new")
-    public String newReviewBoard() {
+	 @GetMapping("/regist")
+    public String goRegistReviewBoard() {
     	
-    	return "reviewBoard/newReviewBoard";
+    	return "reviewBoard/regist";
     	
     }
+	 
+	 @PostMapping("/regist")
+	 public String registReviewBoard(ReviewBoardDTO reviewBoardDTO httpSession) {
+			/*작성자 session 객체에서 가져가는 것을 넣어야함*/
+		 reviewBoardDTO.setWriter(null);
+		 	/*서비스단에 생성자를 담아 호출한다.*/
+		 reviewBoardService.reviewBoardRegist(reviewBoardDTO);
+
+			return "redirect:/reviewBoard/list";
+		}
+		
 	 @GetMapping("detail")
 	 public String ReviewBoardDetatil(
 			 @RequestParam int seq, Model model ) {

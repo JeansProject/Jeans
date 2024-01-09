@@ -26,4 +26,7 @@ public interface ReviewBoardMapper {
 	 * 
 	 * selectBoardList selectBoardDetail 둘다 resultmap이 같은데 이거를 두번써주는게 맞나? 같은 id로 쓰는구나!!!  */
 
+	
+	/*게시글 작성*/
+	int reviewBoardRegist(ReviewBoardDTO reviewBoardDTO);
 }

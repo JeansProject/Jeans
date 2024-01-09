@@ -118,3 +118,11 @@ function executeRating(stars) {
 executeRating(ratingStars);
  
 
+/*리뷰 게시판 게시판 작성 버튼*/
+if(document.getElementById("writeReviewBoard")){
+	const $writeBoard = document.getElementById("writeBoard"); 
+	$writeBoard.onclick = function() {
+            location.href = "/reviewBoard/regist";
+        }
+    
+}

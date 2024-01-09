@@ -85,6 +85,21 @@
 	WHERE A.seq=#{seq}
        
     </select>
+
+	<insert id="reviewBoardRegist">
+
+		INSERT INTO review_board
+	    (title, 
+	     content, 
+	     writer, 
+	     grade)
+		VALUES
+		('#{title}',
+		 '#{content}',
+		 '#{writer}',
+		 '#{grade}');
+
+	</insert> 
     
     
   
