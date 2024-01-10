@@ -3,6 +3,8 @@ package com.jeans.cosmetic_project.reviewBoard.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jeans.cosmetic_project.reviewBoard.dto.ReviewBoardDTO;
 import com.jeans.cosmetic_project.reviewBoard.service.ReviewBoardService;
+import com.jeans.cosmetic_project.user.dto.User;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -63,14 +66,21 @@ public class ReviewBoardController {
 	 @GetMapping("/regist")
     public String goRegistReviewBoard() {
     	
-    	return "reviewBoard/regist";
+    	return "reviewBoard/reviewBoardRegist";
     	
     }
 	 
 	 @PostMapping("/regist")
-	 public String registReviewBoard(ReviewBoardDTO reviewBoardDTO httpSession) {
+	 public String registReviewBoard(ReviewBoardDTO reviewBoardDTO, HttpSession session) {
 			/*작성자 session 객체에서 가져가는 것을 넣어야함*/
-		 reviewBoardDTO.setWriter(null);
+		 /* object가 반환되고, user 객체로 형변환이 필요 */
+		 User user=(User) session.getAttribute("loginUser");//user.get
+		 //reviewBoardDTO.setWriter(user.getId());
+		 /*로그인을 안해서 세션이 없어서 일단 입력*/
+		 reviewBoardDTO.setWriter("테스트아무개");
+		 
+		 /*grade 에 대한 테스트(뷰를 아직 못만들어서) */
+		 reviewBoardDTO.setGrade(1);
 		 	/*서비스단에 생성자를 담아 호출한다.*/
 		 reviewBoardService.reviewBoardRegist(reviewBoardDTO);
 
