@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout}">
+
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+<th:block layout:fragment="userCss">
+</th:block>
+</head>
+
+
+
+<body>
+	<div layout:fragment="content">
+		<div style="margin-top: 100px;">
+			<h1 align="center">게시판 내용</h1>
+			<div>
+				<table style="margin: auto">
+					<tr>
+						<td>분야</td>
+						<td><p></p></td>
+					</tr>
+					<tr>
+						<td>작성자</td>
+						<td><p th:text="${ reviewBoard.writer }"></p></td>
+					</tr>
+					<tr>
+						<td>제목</td>
+						<td colspan="3"><p th:text="${ reviewBoard.title }"></p></td>
+					</tr>
+					<tr>
+						<td>내용</td>
+						<td colspan="3"><textarea name="body" cols="60" rows="15"
+								style="resize: none;" readonly th:text="${ reviewBoard.content }">
+                                </textarea></td>
+					</tr>
+				</table>
+
+				<!-- 댓글 작성용 table-->
+				
+			</div>
+
+			<div align="center">
+				<button type="button" th:onclick="'location.href=\'/reviewBoard/list\''">
+					돌아가기</button>
+			</div>
+
+		</div>
+
+	</div>
+
+
+
+
+	<div layout:fragment="contentModal"></div>
+
+	<th:block layout:fragment="userScript">
+	</th:block>
+</body>
+
+</html>
