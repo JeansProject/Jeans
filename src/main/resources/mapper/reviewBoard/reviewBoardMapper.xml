@@ -86,7 +86,7 @@
        
     </select>
 
-	<insert id="reviewBoardRegist">
+	<insert id="reviewBoardRegist" parameterType="com.jeans.cosmetic_project.reviewBoard.dto.ReviewBoardDTO">
 
 		INSERT INTO review_board
 	    (title, 
@@ -94,10 +94,10 @@
 	     writer, 
 	     grade)
 		VALUES
-		('#{title}',
-		 '#{content}',
-		 '#{writer}',
-		 '#{grade}');
+		(#{title},
+		 #{content},
+		 #{writer},
+		 #{grade});
 
 	</insert> 
     
