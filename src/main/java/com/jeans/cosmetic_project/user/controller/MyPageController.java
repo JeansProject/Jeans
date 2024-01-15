@@ -2,6 +2,7 @@ package com.jeans.cosmetic_project.user.controller;
 
 import com.jeans.cosmetic_project.user.dto.User;
 import com.jeans.cosmetic_project.user.service.MyPageService;
+import javax.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -18,12 +19,13 @@ public class MyPageController {
 
     private final MyPageService myPageServiceImpl;
 
-    @GetMapping
-    public String myPage(Model model, @PathVariable("id") String id) {
+    @GetMapping("/{id}")
+    public String myPage(Model model, @PathVariable("id") String id, HttpSession session) {
 
+        log.info("loginUser = {}", session.getAttribute("loginUser"));
         User user = myPageServiceImpl.findUserById(id);
-        model.addAttribute("user", user);
-        return "/myPage/myPage";
+        model.addAttribute("loginUser", user);
+        return "myPage/myPage";
     }
 
 }

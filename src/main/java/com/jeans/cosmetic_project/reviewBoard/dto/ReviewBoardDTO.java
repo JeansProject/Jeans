@@ -15,6 +15,7 @@ public class ReviewBoardDTO {
  	private Date updated_time;
  	private int count;
  	private int grade;
+
  	
  	
 	

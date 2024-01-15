@@ -15,7 +15,7 @@ public class MainController {
     }
 
     @GetMapping("/main")
-    public String Main() {
+    public String main() {
         log.info("call main page");
         return "main";
     }
