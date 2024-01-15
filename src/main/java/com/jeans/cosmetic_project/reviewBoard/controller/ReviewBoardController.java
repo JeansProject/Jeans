@@ -3,14 +3,18 @@ package com.jeans.cosmetic_project.reviewBoard.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jeans.cosmetic_project.reviewBoard.dto.ReviewBoardDTO;
 import com.jeans.cosmetic_project.reviewBoard.service.ReviewBoardService;
+import com.jeans.cosmetic_project.user.dto.User;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -59,16 +63,34 @@ public class ReviewBoardController {
 	}
 	
 
-	 @GetMapping("/new")
-    public String newReviewBoard() {
+	 @GetMapping("/regist")
+    public String goRegistReviewBoard() {
     	
-    	return "reviewBoard/newReviewBoard";
+    	return "reviewBoard/reviewBoardRegist";
     	
     }
+	 
+	 @PostMapping("/regist")
+	 public String registReviewBoard(ReviewBoardDTO reviewBoardDTO, HttpSession session) {
+			/*작성자 session 객체에서 가져가는 것을 넣어야함*/
+		 /* object가 반환되고, user 객체로 형변환이 필요 */
+		 User user=(User) session.getAttribute("loginUser");//user.get
+		 //reviewBoardDTO.setWriter(user.getId());
+		 /*로그인을 안해서 세션이 없어서 일단 입력*/
+		 reviewBoardDTO.setWriter("테스트아무개");
+		 
+		 /*grade 에 대한 테스트(뷰를 아직 못만들어서) */
+		 reviewBoardDTO.setGrade(1);
+		 	/*서비스단에 생성자를 담아 호출한다.*/
+		 reviewBoardService.reviewBoardRegist(reviewBoardDTO);
+
+			return "redirect:/reviewBoard/list";
+		}
+		
 	 @GetMapping("detail")
 	 public String ReviewBoardDetatil(
 			 @RequestParam int seq, Model model ) {
-		 //게시판 클릭했을떄 seq 를 타고 db에 요청할 예정,. 하 이 거 원래 활뽑는순간 했어야했는데 .
+		 //게시판 클릭했을떄 seq 를 타고 db에 요청할 예정,. 
 		 log.info("[reviewBoardController]seq:{}", seq);
 		 ReviewBoardDTO ReviewBoardDetail= reviewBoardService.selectBoardDetatil(seq);
 		 log.info("[reviewBoardController]ReviewBoardDetail:{}", ReviewBoardDetail);
@@ -77,7 +99,22 @@ public class ReviewBoardController {
 		 
 		 /*DTO 까지 넘어오는거 확인 뷰 템플릿 그리고 거기다가 뿌리는거 연습해야함 .*/
 		 
-		 return "reviewBoard／reviewBoardDetail";
+		 return "reviewBoard/reviewBoardDetail";
+	 }
+	 
+	 @GetMapping("modify")
+	 public String ReviewBoardModify(@RequestParam int seq, Model model ) {
+		 
+		 log.info("[reviewBoardController. modify]seq:{}", seq);
+		 
+		 ReviewBoardDTO ReviewBoardDetail= reviewBoardService.selectBoardDetatil(seq);
+		 
+		 log.info("[reviewBoardController]ReviewBoardModify:{}", ReviewBoardDetail);
+		 
+		 model.addAttribute("reviewBoard",ReviewBoardDetail);
+		 
+		return null;
+		 
 	 }
 
 }
