@@ -90,7 +90,7 @@ public class ReviewBoardController {
 	 @GetMapping("detail")
 	 public String ReviewBoardDetatil(
 			 @RequestParam int seq, Model model ) {
-		 //게시판 클릭했을떄 seq 를 타고 db에 요청할 예정,. 하 이 거 원래 활뽑는순간 했어야했는데 .
+		 //게시판 클릭했을떄 seq 를 타고 db에 요청할 예정,. 
 		 log.info("[reviewBoardController]seq:{}", seq);
 		 ReviewBoardDTO ReviewBoardDetail= reviewBoardService.selectBoardDetatil(seq);
 		 log.info("[reviewBoardController]ReviewBoardDetail:{}", ReviewBoardDetail);
@@ -100,6 +100,21 @@ public class ReviewBoardController {
 		 /*DTO 까지 넘어오는거 확인 뷰 템플릿 그리고 거기다가 뿌리는거 연습해야함 .*/
 		 
 		 return "reviewBoard/reviewBoardDetail";
+	 }
+	 
+	 @GetMapping("modify")
+	 public String ReviewBoardModify(@RequestParam int seq, Model model ) {
+		 
+		 log.info("[reviewBoardController. modify]seq:{}", seq);
+		 
+		 ReviewBoardDTO ReviewBoardDetail= reviewBoardService.selectBoardDetatil(seq);
+		 
+		 log.info("[reviewBoardController]ReviewBoardModify:{}", ReviewBoardDetail);
+		 
+		 model.addAttribute("reviewBoard",ReviewBoardDetail);
+		 
+		return null;
+		 
 	 }
 
 }
