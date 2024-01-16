@@ -11,8 +11,7 @@
         age as age,
         email as email,
         phone as phone,
-        birthday as birthday,
-        `role` as role
+        birthday as birthday
     FROM
         users
     WHERE

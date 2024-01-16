@@ -27,7 +27,7 @@ public class LoginServiceImpl implements LoginService{
                 .age(user.getAge())
                 .phone(user.getPhone())
                 .birthday(user.getBirthday())
-                .role(user.getRole())
+//                .role(user.getRole())
                 .build();
         }
         else verifiedUser = null;

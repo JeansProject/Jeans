@@ -52,7 +52,7 @@ public class SecurityConfig {
                 .permitAll()
                 .antMatchers("/my-page/**")
                 .permitAll()
-                .antMatchers("/my-page/**")
+                .antMatchers("/reviewBoard/**")
                 .permitAll()
 //                .antMatchers("/reviewBoard/**", "/my-page/**").hasAnyRole("ADMIN", "USER")
 //                .anyRequest().authenticated()

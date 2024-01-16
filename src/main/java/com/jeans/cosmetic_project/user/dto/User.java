@@ -1,13 +1,17 @@
 package com.jeans.cosmetic_project.user.dto;
 
 import com.jeans.cosmetic_project.user.enums.UserRole;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class User {
 
-    private UserRole role;
+//    private UserRole role;
     private int seq;
     private String id;
     private String password;
@@ -19,9 +23,9 @@ public class User {
     private String birthday;
 
     @Builder
-    public User(UserRole role, int seq, String id, String name, int age, String email, String phone,
+    public User(int seq, String id, String name, int age, String email, String phone,
         String birthday) {
-        this.role = role;
+//        this.role = role;
         this.seq = seq;
         this.id = id;
         this.name = name;
