@@ -116,5 +116,3 @@ function executeRating(stars) {
 }
 
 executeRating(ratingStars);
- 
-
