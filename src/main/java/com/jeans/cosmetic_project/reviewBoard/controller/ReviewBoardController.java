@@ -76,11 +76,14 @@ public class ReviewBoardController {
 		 /* object가 반환되고, user 객체로 형변환이 필요 */
 		 User user=(User) session.getAttribute("loginUser");//user.get
 		 //reviewBoardDTO.setWriter(user.getId());
+		// String name= user.getId();
+
 		 /*로그인을 안해서 세션이 없어서 일단 입력*/
 		 reviewBoardDTO.setWriter("테스트아무개");
-		 
+
+		 /*grade 뷰완성 */
 		 /*grade 에 대한 테스트(뷰를 아직 못만들어서) */
-		 reviewBoardDTO.setGrade(1);
+//		 reviewBoardDTO.setGrade(1);
 		 	/*서비스단에 생성자를 담아 호출한다.*/
 		 reviewBoardService.reviewBoardRegist(reviewBoardDTO);
 
