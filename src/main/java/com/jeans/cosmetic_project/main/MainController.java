@@ -10,13 +10,11 @@ public class MainController {
 
     @GetMapping("/")
     public String defaultRequest() {
-        log.info("call main page");
         return "redirect:/main";
     }
 
     @GetMapping("/main")
     public String main() {
-        log.info("call main page");
         return "main";
     }
 }
