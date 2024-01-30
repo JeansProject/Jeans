@@ -31,6 +31,7 @@ public class LoginController {
     @ResponseBody
     public ResponseEntity verifyUser(@RequestBody LoginRequestDto loginRequestDto, Model model, HttpSession session) {
         User loginUser = loginServiceImpl.verifyUser(loginRequestDto);
+
         if(loginUser != null) {
             session.setAttribute("loginUser", loginUser);
         }
