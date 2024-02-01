@@ -102,16 +102,15 @@
 	</insert>
 
 	<update id="modify">
-		update
-			review_board
-		set
-			#{title},
-			#{content},
+    <![CDATA[
+		UPDATE review_board
+		SET
+			title=#{title},
+			content=#{content},
 			updated_time=now()
-		where
-			seq=#{seq};
-
-	</update>
+		WHERE seq=#{seq};
+		]]>
+</update>
     
     
   

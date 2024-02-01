@@ -78,6 +78,7 @@ public class ReviewBoardService {
 		reviewBoardMapper.reviewBoardRegist(reviewBoardDTO);
 	}
 
+	/*게시르 update */
 	public int modify(ReviewBoardDTO reviewBoardDTO) {
 
 		return reviewBoardMapper.modify(reviewBoardDTO);
