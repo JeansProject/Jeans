@@ -78,4 +78,12 @@ public class ReviewBoardService {
 		reviewBoardMapper.reviewBoardRegist(reviewBoardDTO);
 	}
 
+	public int modify(ReviewBoardDTO reviewBoardDTO) {
+
+		return reviewBoardMapper.modify(reviewBoardDTO);
+
+
+	}
+
+
 }

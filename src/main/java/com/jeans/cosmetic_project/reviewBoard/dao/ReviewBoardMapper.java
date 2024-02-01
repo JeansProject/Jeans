@@ -29,4 +29,8 @@ public interface ReviewBoardMapper {
 	
 	/*게시글 작성*/
 	int reviewBoardRegist(ReviewBoardDTO reviewBoardDTO);
+
+	/*게시판 수정*/
+
+	int modify (ReviewBoardDTO reviewBoardDTO);
 }

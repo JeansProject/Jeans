@@ -99,7 +99,19 @@
 		 #{writer},
 		 #{grade});
 
-	</insert> 
+	</insert>
+
+	<update id="modify">
+		update
+			review_board
+		set
+			#{title},
+			#{content},
+			updated_time=now()
+		where
+			seq=#{seq};
+
+	</update>
     
     
   

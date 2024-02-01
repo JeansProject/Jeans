@@ -8,3 +8,8 @@ if(document.getElementById("writeReviewBoard")){
         }
     
 }
+
+/*이벤트 리스너 */
+document.getElementById("cancelModify_btn").addEventListener('click',function () {
+    location.href= '/reviewBoard/detail?seq='+reviewBoard.seq;
+})
