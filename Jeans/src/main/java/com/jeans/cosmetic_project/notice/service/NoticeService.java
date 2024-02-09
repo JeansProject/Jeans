@@ -1,8 +1,7 @@
-package com.jeans.cosmetic_project.test.service;
+package com.jeans.cosmetic_project.notice.service;
 
-import com.jeans.cosmetic_project.test.dto.FileDto;
-import com.jeans.cosmetic_project.test.dto.LoginUser;
-import com.jeans.cosmetic_project.test.dto.NoticeDto;
+import com.jeans.cosmetic_project.notice.dto.FileDto;
+import com.jeans.cosmetic_project.notice.dto.NoticeDto;
 
 import java.util.List;
 

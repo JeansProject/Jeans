@@ -1,4 +1,4 @@
-package com.jeans.cosmetic_project.test.dto;
+package com.jeans.cosmetic_project.notice.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,9 +9,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UpdateUserInfoRequestDto {
+public class TestDto {
 
-    private String name;
-    private String phone;
     private String id;
+    private String password;
 }

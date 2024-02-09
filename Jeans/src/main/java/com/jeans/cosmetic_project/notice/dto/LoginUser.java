@@ -1,4 +1,4 @@
-package com.jeans.cosmetic_project.test.dto;
+package com.jeans.cosmetic_project.notice.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

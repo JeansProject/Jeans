@@ -1,26 +1,23 @@
-package com.jeans.cosmetic_project.test.controller;
+package com.jeans.cosmetic_project.notice.controller;
 
-import com.jeans.cosmetic_project.test.dto.FileDto;
-import com.jeans.cosmetic_project.test.dto.LoginUser;
-import com.jeans.cosmetic_project.test.dto.NoticeDto;
-import com.jeans.cosmetic_project.test.dto.TestDto;
-import com.jeans.cosmetic_project.test.service.NoticeService;
-import com.jeans.cosmetic_project.test.service.TestService;
+import com.jeans.cosmetic_project.notice.dto.FileDto;
+import com.jeans.cosmetic_project.notice.dto.LoginUser;
+import com.jeans.cosmetic_project.notice.dto.NoticeDto;
+import com.jeans.cosmetic_project.notice.dto.TestDto;
+import com.jeans.cosmetic_project.notice.service.NoticeService;
+import com.jeans.cosmetic_project.notice.service.TestService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.File;
@@ -28,9 +25,7 @@ import java.io.IOException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor

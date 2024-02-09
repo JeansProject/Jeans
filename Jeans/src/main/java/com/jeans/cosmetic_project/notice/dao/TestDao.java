@@ -1,11 +1,8 @@
-package com.jeans.cosmetic_project.test.dao;
+package com.jeans.cosmetic_project.notice.dao;
 
-import com.jeans.cosmetic_project.test.dto.*;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import com.jeans.cosmetic_project.notice.dto.*;
 import org.apache.ibatis.annotations.Mapper;
 
-import java.io.File;
 import java.util.List;
 
 @Mapper

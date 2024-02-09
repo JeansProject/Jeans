@@ -1,4 +1,4 @@
-package com.jeans.cosmetic_project.test.controller;
+package com.jeans.cosmetic_project.notice.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

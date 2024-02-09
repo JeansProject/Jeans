@@ -1,9 +1,8 @@
-package com.jeans.cosmetic_project.test.service;
+package com.jeans.cosmetic_project.notice.service;
 
-import com.jeans.cosmetic_project.test.dao.TestDao;
-import com.jeans.cosmetic_project.test.dto.LoginUser;
-import com.jeans.cosmetic_project.test.dto.TestDto;
-import com.jeans.cosmetic_project.test.dto.UserInfoDto;
+import com.jeans.cosmetic_project.notice.dao.TestDao;
+import com.jeans.cosmetic_project.notice.dto.LoginUser;
+import com.jeans.cosmetic_project.notice.dto.TestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

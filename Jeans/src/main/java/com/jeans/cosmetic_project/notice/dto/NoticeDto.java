@@ -1,4 +1,4 @@
-package com.jeans.cosmetic_project.test.dto;
+package com.jeans.cosmetic_project.notice.dto;
 
 import lombok.*;
 import org.springframework.web.multipart.MultipartFile;

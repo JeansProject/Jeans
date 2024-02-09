@@ -1,12 +1,9 @@
-package com.jeans.cosmetic_project.test.service;
+package com.jeans.cosmetic_project.notice.service;
 
 
-import com.jeans.cosmetic_project.test.dao.TestDao;
-import com.jeans.cosmetic_project.test.dto.FileDto;
-import com.jeans.cosmetic_project.test.dto.LoginUser;
-import com.jeans.cosmetic_project.test.dto.NoticeDto;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import com.jeans.cosmetic_project.notice.dao.TestDao;
+import com.jeans.cosmetic_project.notice.dto.FileDto;
+import com.jeans.cosmetic_project.notice.dto.NoticeDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
