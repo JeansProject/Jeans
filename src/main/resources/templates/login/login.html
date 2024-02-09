@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
+
+<head>
+    <th:block layout:fragment="userCss">
+    </th:block>
+</head>
+
+<body>
+    <!-- Content -->
+    <div layout:fragment="content">
+<!--        <h1>Login 페이지</h1>-->
+        <div class="vh-100 container justify-content-center">
+                <!--<form>-->
+                <!-- <h1>로그인 페이지</h1> -->
+<!--                <form th:action="@{/login/verify}" th:method="post">-->
+                    <div class="form-floating gap-2 col-8 mx-auto">
+                        <input type="text" class="form-control" id="id" placeholder="" name="id">
+                        <label for="id">ID</label>
+                    </div>
+                    <div class="form-floating gap-2 col-8 mx-auto">
+                        <input type="password" class="form-control" id="password" placeholder="" name="password">
+                        <label for="password">Password</label>
+                    </div>
+                    <div class="checkbox mb-3 gap-2 col-8 mx-auto">
+                        <label>
+                            <input type="checkbox" value="remember-me">
+                            Remember me
+                        </label>
+                    </div>
+
+                    <div class="d-grid gap-2 col-6 mx-auto">
+<!--                        <button class="btn btn-primary" type="submit" id="loginBtn">login</button>-->
+                        <button class="btn btn-primary" type="button" id="loginBtn">login</button>
+                        <a class="btn btn-primary" type="button" th:href="@{/register}">sign</a>
+                    </div>
+<!--                </form>-->
+        </div>
+    </div>
+
+    <div layout:fragment="contentModal"></div>
+
+    <!-- 스크립트 추가 -->
+    <th:block layout:fragment="userScript">
+        <script type="text/javascript" th:src="@{/js/login/login.js}" defer></script>
+    </th:block>
+</body>
+
+</html>

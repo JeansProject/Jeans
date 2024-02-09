@@ -1,0 +1,186 @@
+@charset "UTF-8";
+/* reset */
+*{
+    margin: 0;
+    padding: 0;
+    color: #000;
+    font-family: 'NanumSquareRound', Arial, Helvetica, sans-serif;
+}
+a {
+    text-decoration: none;
+    color: #333;
+}
+li {
+    list-style: none;
+}
+body {
+    /* background-color: rgb(200, 233, 255); */
+    background: linear-gradient(rgb(255, 255, 255) 1%, rgb(186, 227, 255));
+    padding-top: 10rem;
+}
+
+/* font */
+@font-face {
+    font-family: 'NanumSquareRound';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* register */
+.hide {
+    display: none;
+}
+
+/* banner */
+/* .slider {
+    background: linear-gradient(rgb(255, 255, 255) 40%, rgb(216, 240, 255));
+    padding-top: 100px;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+} */
+/* .slider .banner {
+    max-width: 100%;
+    height: 750px;
+    text-align: center;
+}
+.slider .banner img {
+    width: auto;
+    height: auto;
+    max-width: 50%;
+    max-height: 30%;
+    padding-top: 5em;
+}
+.slider .banner h3 {
+    font-size: 1.5em;
+    padding: 2em;
+    color: #095eb9;
+}
+.slider .banner .note {
+    text-align: center;
+    line-height: 1.75;
+} */
+
+/* contents */
+/* #contents {
+    width: 100%;
+    height: 100%;
+}
+#contents .contentsWrap {
+    background: linear-gradient(rgb(216, 240, 255) 50%, rgb(200, 233, 255));
+}
+#contents .contentsWrap .image1 {
+    width: calc(100vw - 80vw);
+    height: calc(100vh - 50vh);
+    left: 10%;
+    background-image: url(/images/testi1.png);
+    position: relative;
+}
+#contents .contentsWrap .image1 .text {
+    position: absolute;
+    width: 100%;
+    left: 100%;
+    top: 50%;
+    transform: translate(20%, -50%);
+}
+#contents .contentsWrap .image1 .text h2 {
+    color: #095eb9;
+    font-size: xxx-large;
+}
+#contents .contentsWrap .image1 .text p {
+    padding: 1em 0;
+    line-height: 2;
+    width: 150%;
+}
+#contents .contentsWrap .image1 .text button {
+    width: 150%;
+    height: 3em;
+    border-radius: 1em;
+    background: rgba(255, 255, 255, 0.5);
+    border: none;
+    outline: 1px solid black;
+    cursor: pointer;
+}
+#contents .contentsWrap .image2 {
+    width: calc(100vw - 80vw);
+    height: calc(100vh - 50vh);
+    left: 100%;
+    top: 5em;
+    transform: translate(-150%, 0);
+    background-image: url(/images/testi1.png);
+    position: relative;
+}
+#contents .contentsWrap .image2 .text {
+    position: absolute;
+    width: 100%;
+    right: 150%;
+    top: 50%;
+    transform: translate(-20%, -50%);
+}
+#contents .contentsWrap .image2 .text h2 {
+
+    color: #095eb9;
+    font-size: xxx-large;
+}
+#contents .contentsWrap .image2 .text p {
+    padding: 1em 0;
+    line-height: 2;
+    width: 150%;
+}
+#contents .contentsWrap .image2 .text button {
+    width: 150%;
+    height: 3em;
+    border-radius: 1em;
+    background: rgba(255, 255, 255, 0.5);
+    border: none;
+    outline: 1px solid black;
+    cursor: pointer;
+} */
+
+/* footer */
+/* #footer {
+    width: 100%;
+    height: 400px;
+}
+#footer .footerInfo {
+    border-top: 1px solid rgb(150, 150, 150);
+    margin-top: 15em;
+    text-align: center;
+}
+#footer .footerInfo p {
+    position: relative;
+    padding: 3em;
+    align-items: center;
+    font-size: large;
+}
+#footer .footerInfo .navFooter {
+    position: absolute;
+    width: 100%;
+}
+#footer .footerInfo .navFooter ul {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    margin-bottom: 1.5em;
+}
+#footer .footerInfo .navFooter ul > li > a {
+    width: 15rem;
+    padding-left: 2em;
+    display: flex;
+    padding: 0.5em;
+    color: #264569;
+    background-color: #ffffff3d;
+}
+#footer .footerInfo .navFooter ul > li > ul {
+    display: block;
+    padding-top: 0.75em;
+}
+#footer .footerInfo .navFooter ul > li > ul > li a {
+    color: #43515f;
+    background: none;
+    line-height: 1.5;
+}
+#footer .footerInfo .navFooter ul > li > ul > li a:hover {
+    color: #095eb9;
+} */

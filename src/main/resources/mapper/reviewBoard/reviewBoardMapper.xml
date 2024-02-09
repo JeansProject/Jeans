@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper
+	namespace="com.jeans.cosmetic_project.reviewBoard.dao.ReviewBoardMapper">
+
+	<resultMap id="generalBoardResultMap"
+		type="com.jeans.cosmetic_project.reviewBoard.dto.ReviewBoardDTO">
+		<!-- 여기에 매핑할 속성들을 추가22 -->
+		<result column="seq" property="seq" />
+		<result column="title" property="title" />
+		<result column="content" property="content" />
+		<result column="writer" property="writer" />
+		<result column="write_time" property="write_time" />
+		<result column="updated_time" property="updated_time" />
+		<result column="count" property="count" />
+		<!-- 추가로 필요한 속성들을 계속해서 추가 -->
+	</resultMap>
+	
+
+
+
+
+
+	<select id="selectTotalCount" resultType="_int"
+		parameterType="hashmap">
+		SELECT COUNT(*)
+		FROM review_board A
+		<where>
+			<!-- hashmap에 담아섯 왔는데 왜 안되지? -->
+			<if test="searchCondition == 'writer'">
+				AND A.writer LIKE CONCAT('%', #{searchValue}, '%')
+			</if>
+			<if test="searchCondition == 'title'">
+				AND A.title LIKE CONCAT('%', #{searchValue}, '%')
+			</if>
+			<if test="searchCondition == 'content'">
+				AND A.content LIKE CONCAT('%', #{searchValue}, '%')
+			</if>
+		</where>
+	</select>
+
+	<select id="selectBoardList" resultMap="generalBoardResultMap" parameterType= "com.jeans.cosmetic_project.common.paging.SelectCriteria">
+		SELECT
+		A.seq,
+		A.title,
+		A.content,
+		A.writer,
+		A.write_time
+		FROM review_board A
+		<where>
+			<if test="searchCondition == 'writer'">
+				AND A.writer LIKE CONCAT('%', #{searchValue}, '%')
+			</if>
+			<if test="searchCondition == 'title'">
+				AND A.title LIKE CONCAT('%', #{searchValue}, '%')
+			</if>
+			<if test="searchCondition == 'content'">
+				AND A.content LIKE CONCAT('%', #{searchValue}, '%')
+			</if>
+
+		</where>
+		ORDER BY A.seq DESC
+		LIMIT #{startRow}, #{endRow}
+	</select>
+
+
+    <update id="incrementBoardCount">
+        UPDATE 
+            review_board A  <!-- update 테이블  -->
+        SET A.count = A.count + 1  <!-- 2 -->
+        WHERE A.seq = #{ seq };
+    </update>
+    
+    
+    <select id="selectBoardDetail" resultMap="generalBoardResultMap" >
+	SELECT
+	A.title,
+	A.content,
+	A.writer,
+	A.write_time,
+	A.count
+	FROM review_board A
+	WHERE A.seq=#{seq}
+       
+    </select>
+
+	<insert id="reviewBoardRegist" parameterType="com.jeans.cosmetic_project.reviewBoard.dto.ReviewBoardDTO">
+
+		INSERT INTO review_board
+	    (title, 
+	     content, 
+	     writer, 
+	     grade)
+		VALUES
+		(#{title},
+		 #{content},
+		 #{writer},
+		 #{grade});
+
+	</insert>
+
+	<update id="modify">
+    <![CDATA[
+		UPDATE review_board
+		SET
+			title=#{title},
+			content=#{content},
+			updated_time=now()
+		WHERE seq=#{seq};
+		]]>
+</update>
+    
+    
+  
+
+</mapper>

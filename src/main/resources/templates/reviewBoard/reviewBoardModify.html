@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block layout:fragment="userCss">
+    </th:block>
+</head>
+
+<body>
+ <div layout:fragment="content">
+    <div style="margin-top: 100px;">
+        <h1 align="center">게시판 내용</h1>
+        <div>
+            <div>
+                <form id="modifyForm" action="/reviewBoard/modify" method="post">
+
+                    <table style="margin: auto">
+
+                        <tr>
+                            <td>작성자</td>
+                            <td><p th:text="${ reviewBoard.writer }"></p></td>
+                        </tr>
+                        <tr>
+                            <td>제목</td>
+                            <td colspan="3"><input type="text" name="title"
+                                                   style="width: 400px;" th:value="${ reviewBoard.title }"></td>
+
+                        </tr>
+                        <tr>
+                            <td>점수</td>
+                            <td>
+
+                                <select name="grade" th:value="${reviewBoard.grade}">
+                                    <option value="1">1점</option>
+                                    <option value="2">2점</option>
+                                    <option value="3">3점</option>
+                                    <option value="4">4점</option>
+                                    <option value="5">5점</option>
+                                </select>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td>내용</td>
+                            <td colspan="3">
+
+                                    <textarea th:text="${reviewBoard.content}" name="content" cols="60" rows="15"
+                                              style="resize: none;"></textarea>
+
+                            </td>
+                            <input type="hidden"  name="seq" th:value="${reviewBoard.seq}">
+
+                        </tr>
+                    </table>
+
+                    <!-- 댓글 작성용 table-->
+
+                    <div align="center">
+                        <button type="button" th:onclick="'location.href=\'/reviewBoard/list\''">
+                            돌아가기
+                        </button>
+                        <!--js로 한번 onclick 해볼까? -->
+                        <button type="submit">수정 완료</button>
+                        <button type="button" id="cancelModify_btn">수정 취소</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+ </div>
+    <div layout:fragment="contentModal"></div>
+
+    <th:block layout:fragment="userScript">
+        <script th:inline="javascript">
+            var reviewBoard = [[${reviewBoard}]];
+        </script>
+        <script type="text/javascript"
+                th:src="@{/js/reviewBoard/reviewBoard.js}" defer></script>
+    </th:block>
+
+</body>
+
+</html>
