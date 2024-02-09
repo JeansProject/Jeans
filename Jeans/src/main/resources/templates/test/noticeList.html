@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+
+<head>
+    <th:block layout:fragment="userCss">
+    </th:block>
+</head>
+
+<body>
+<!-- Content -->
+<div layout:fragment="content">
+    <div  class="container slider">
+        <!--      <form>-->
+<!--        <div class="row" style="padding: 10px; text-align: center;">-->
+<!--            <h1><a th:href="@{/test/noticeList}" style="text-decoration: none;">공지사항</a></h1>-->
+<!--        </div>-->
+<!--        <h1>공지사항 목록</h1>-->
+<!--        <div class="row">-->
+<!--            <table>-->
+<!--                <thead style="text-align: center;">-->
+<!--                <tr>-->
+<!--                    <th style="text-align: center">순서</th>-->
+<!--                    <th style="text-align: center">작성자</th>-->
+<!--                    <th style="text-align: center">제목</th>-->
+<!--                    <th style="text-align: center">작성일</th>-->
+<!--                </tr>-->
+<!--                </thead>-->
+<!--                <tbody>-->
+<!--                    <tr th:each="data : ${testList}" th:onclick=-->
+<!--                            "'window.location.href = \'' + @{/test/notice/{seq}(seq=${data.seq})} + '\''">-->
+<!--                        <td th:text="${data.seq}" style="cursor: pointer; text-align: center;"></td>-->
+<!--                        <td th:text="${data.writer}" style="cursor: pointer; text-align: center;"></td>-->
+<!--                        <td th:text="${data.title}" style="cursor: pointer; text-align: center;"></td>-->
+<!--                        <td th:text="${data.write_time}" style="cursor: pointer; text-align: center;"></td>-->
+<!--                    </tr>-->
+<!--                </tbody>-->
+<!--            </table>-->
+<!--        </div>-->
+
+        <section class="main">
+            <section style="display: flex; flex-direction: row-reverse;">
+                <button id="open-modal" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">글 작성</button>
+            </section>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">제목</th>
+                    <th scope="col">내용</th>
+                    <th scope="col">작성자</th>
+                    <th scope="col">작성일</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody id="dataTable">
+<!--                <tr>-->
+<!--                    <th scope="row">1</th>-->
+<!--                    <td>Mark</td>-->
+<!--                    <td>Otto</td>-->
+<!--                    <td>@mdo</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <th scope="row">2</th>-->
+<!--                    <td>Mark</td>-->
+<!--                    <td>Otto</td>-->
+<!--                    <td>@mdo</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <th scope="row">3</th>-->
+<!--                    <td>Mark</td>-->
+<!--                    <td>Otto</td>-->
+<!--                    <td>@mdo</td>-->
+<!--                </tr>-->
+<!--                </tbody>-->
+            </table>
+        </section>
+
+        <section>
+            <nav aria-label="..." id="page_area" style="display: flex; justify-content:center;">
+            </nav>
+        </section>
+
+
+        <!--      </form>-->
+
+
+<div layout:fragment="contentModal">
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form role="form" id="form" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="title">제목</label>
+                            <input type="text" class="form-control" id="title" placeholder="제목을 입력하세요">
+                </div>
+                        <div class="form-group">
+                            <label for="writer"> 작성자</label>
+                            <input type="text" class="form-control" id="writer" placeholder="작성자를 입력하세요">
+                        </div>
+                        <div class="form-group">
+                            <label for="content">내용</label>
+                            <textarea class="form-control" id="content" placeholder="내용을 입력하세요" rows="15"></textarea>
+                        </div>
+                        <div>
+                            <label for="file"></label>
+                            <input type="text" class="form-control" id="showFile" style="display:none">
+                            <button type="button" style="display:none" id="deleteFileBtn">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <button type="button" style="display:none" id="fileDownBtn">
+                                <span aria-hidden="true">down</span>
+                            </button>
+                            <input type="file" id="file" name="files">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="insertBtn" value="등록">등록</button>
+                    <button type="button" class="btn btn-primary" id="updateBtn" value="수정" style="display:none">수정</button>
+                    <button type="button" class="btn btn-primary" id="deleteBtn" value="삭제" style="display:none">삭제</button>
+                    <button type="button" class="btn btn-default close" data-dismiss="modal">닫기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+            <!--            &lt;!&ndash;        Modal content&ndash;&gt;-->
+<!--            <div class="modal-content">-->
+<!--                <div class="modal-header">-->
+<!--                    <button type="button" class="close" data-dismiss="modal">&times;</button>-->
+<!--                    <h4 id="modal-title" class="modal-title"></h4>-->
+<!--                </div>-->
+<!--                <div class="modal-body">-->
+<!--                            <table class="table">-->
+<!--                                <tr>-->
+<!--                                    <td>제목</td>-->
+<!--                                    <td><input type="text" id="title" name="title" placeholder="제목을 입력하세요" ></td>-->
+<!--                                </tr>-->
+<!--                                <tr>-->
+<!--                                    <td>작성자</td>-->
+<!--                                    <td><input class="form-control" id="writer" type="text"></td>-->
+<!--                                </tr>-->
+<!--                                <tr>-->
+<!--                                    <td>내용</td>-->
+<!--                                    <td><textarea class="form-control" id="content" rows="10"></textarea></td>-->
+<!--                                </tr>-->
+<!--                            </table>-->
+<!--                <div class="modal-footer">-->
+<!--                    <button id="modalInsert" type="button" class="btn btn-success">작성</button>-->
+<!--                    <button type="button" class="close btn btn-default" data-dismiss="modal">닫기</button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--    스크립트 추가-->
+<th:block layout:fragment="userScript">
+<!--    <script type="text/javascript" th:src="@{/js/test/test.js}" defer></script>-->
+    <script th:inline ="javascript">
+        var testList =[[${testList}]];
+    </script>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script th:inline="javascript" type="text/javascript" th:src="@{/js/test/modal.js?ver=1}"></script>
+</th:block>
+
+</body>
+
+</html>
