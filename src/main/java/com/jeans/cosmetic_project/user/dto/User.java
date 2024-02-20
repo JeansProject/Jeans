@@ -21,10 +21,11 @@ public class User {
     private String email;
     private String phone;
     private String birthday;
+    private String role;
 
     @Builder
     public User(int seq, String id, String name, int age, String email, String phone,
-        String birthday) {
+        String birthday, String role) {
 //        this.role = role;
         this.seq = seq;
         this.id = id;
@@ -33,5 +34,6 @@ public class User {
         this.email = email;
         this.phone = phone;
         this.birthday = birthday;
+        this.role = role;
     }
 }
