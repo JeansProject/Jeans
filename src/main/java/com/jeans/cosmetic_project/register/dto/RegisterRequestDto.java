@@ -4,6 +4,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -18,6 +21,9 @@ public class RegisterRequestDto {
     private String birthday;
 
     private String encodedPassword;
+
+
+
 
     @Builder
     public RegisterRequestDto(String id, String password, String name, int age, String email,

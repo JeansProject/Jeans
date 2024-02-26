@@ -17,8 +17,8 @@
 	<div layout:fragment="content">
 		<div>
 			<h1 align="center">리뷰 게시판 작성</h1>
-			<div>
-				<form id="boardRegistForm" action="/reviewBoard/regist" method="post">
+			<td>
+				<form id="boardRegistForm" action="/reviewBoard/regist" method="post" enctype="multipart/form-data">
 					<table style="margin: auto;">
 						<!-- 별점 옵션으로 하면 좋을듯? -->
 						<tr>
@@ -39,10 +39,22 @@
 								style="width: 400px;"></td>
 						</tr>
 						<tr>
+
+								<td for="inputFile" class="col-sm-2 col-form-label"><strong>첨부 파일</strong></td>
+								<td>
+									<div class="custom-file" id="inputFile">
+										<input name="boardFile" type="file" class="custom-file-input" id="customFile" />
+										<label class="custom-file-label" for="customFile">파일을 선택해 주세요.</label>
+									</div>
+
+							</td>
+						</tr>
+						<tr>
 							<td>내용</td>
 							<td colspan="3"><textarea name="content" cols="60" rows="15"
 									style="resize: none;"></textarea></td>
 						</tr>
+
 					</table>
 					<br>
 					<div align="center">
