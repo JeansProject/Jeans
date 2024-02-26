@@ -1,9 +1,12 @@
 package com.jeans.cosmetic_project.reviewBoard.service;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.jeans.cosmetic_project.reviewBoard.dto.ReviewBoardFileDTO;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,6 +16,7 @@ import com.jeans.cosmetic_project.reviewBoard.dao.ReviewBoardMapper;
 import com.jeans.cosmetic_project.reviewBoard.dto.ReviewBoardDTO;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.multipart.MultipartFile;
 
 @Slf4j
 @Service
@@ -73,8 +77,47 @@ public class ReviewBoardService {
 	}
 	
 	/*게시글 작성 insert 반환값을 딱히 없다.*/
-	public void reviewBoardRegist(ReviewBoardDTO reviewBoardDTO) {
-		
+	public void reviewBoardRegist(ReviewBoardDTO reviewBoardDTO) throws IOException {
+		if(reviewBoardDTO.getBoardFile().get(0).isEmpty()){
+			//파일이 없다.
+			reviewBoardDTO.setFileAttached(0);
+			reviewBoardMapper.reviewBoardRegist(reviewBoardDTO);
+
+		}else{
+			//파일 있다.(1)
+			reviewBoardDTO.setFileAttached(1);
+			//게시글 저장 후 id값 활용을 위해 리턴 받음. -> id가 reviewBoard의 고유값 //반환형으로 바꿔야함.(2)
+			ReviewBoardDTO savedReviewBoard=reviewBoardMapper.reviewBoardRegist(reviewBoardDTO);
+
+			//파일만 따로 가져 오기 (multipartFile 객체에 대해서 잘 알아야 할듯) (3)
+			for(MultipartFile boardFile: reviewBoardDTO.getBoardFile()){
+				//파일만 따로 가져오기
+				String originalFilename = boardFile.getOriginalFilename();
+				System.out.println("originalFilename = " + originalFilename);
+				// 저장용 이름 만들기
+				System.out.println(System.currentTimeMillis());
+				String storedFileName = System.currentTimeMillis() + "-" + originalFilename;
+				System.out.println("storedFileName = " + storedFileName);
+
+				//boardFileDTO 세팅
+				//MULTIPARTfILE에 파일이 들어오면, 그것에 다른 것이 담기기 전에, db에 옮기는거구나!
+				//MULTIPARTfILE자체는 dB에 저장이 될 수 없는 것이기 떄문에.
+				ReviewBoardFileDTO reviewBoardFileDTO = new ReviewBoardFileDTO();
+				//필요한게 originalFilename, storedFilename, saveBoard.getId() "고유값을 가져온단말이야, 왜 가져오는거야?"
+				reviewBoardFileDTO.setOriginalFileName(originalFilename);
+				reviewBoardFileDTO.setStoredFileName(storedFileName);
+				reviewBoardFileDTO.setReviewBoardSeq(savedReviewBoard.getSeq());
+				// 파일 저장용 폴더에 파일 저장 처리
+				//String savePath = "/Users/codingrecipe/development/intellij_community/spring_upload_files/" + storedFileName; // mac
+                 String savePath = "C:/Users/LEEHYUNJAE/pring_upload_files/" + storedFileName;
+				boardFile.transferTo(new File(savePath));
+				// board_file_table 저장 처리
+				reviewBoardMapper.saveFile(reviewBoardFileDTO);
+
+
+
+			}
+		}
 		reviewBoardMapper.reviewBoardRegist(reviewBoardDTO);
 	}
 

@@ -1,5 +1,6 @@
 package com.jeans.cosmetic_project.reviewBoard.controller;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -71,7 +72,7 @@ public class ReviewBoardController {
 	}
 
 	@PostMapping("/regist")
-	public String registReviewBoard(ReviewBoardDTO reviewBoardDTO, HttpSession session) {
+	public String registReviewBoard(ReviewBoardDTO reviewBoardDTO, HttpSession session) throws IOException {
 		/*작성자 session 객체에서 가져가는 것을 넣어야함*/
 		/* object가 반환되고, user 객체로 형변환이 필요 */
 		User user = (User) session.getAttribute("loginUser");//user.get
@@ -87,6 +88,8 @@ public class ReviewBoardController {
 		/*grade 에 대한 테스트(뷰를 아직 못만들어서) */
 //		 reviewBoardDTO.setGrade(1);
 		/*서비스단에 생성자를 담아 호출한다.*/
+
+
 		reviewBoardService.reviewBoardRegist(reviewBoardDTO);
 
 		return "redirect:/reviewBoard/list";

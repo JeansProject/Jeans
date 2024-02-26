@@ -3,6 +3,7 @@ package com.jeans.cosmetic_project.reviewBoard.dao;
 import java.util.List;
 import java.util.Map;
 
+import com.jeans.cosmetic_project.reviewBoard.dto.ReviewBoardFileDTO;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.jeans.cosmetic_project.common.paging.SelectCriteria;
@@ -28,9 +29,17 @@ public interface ReviewBoardMapper {
 
 	
 	/*게시글 작성*/
-	int reviewBoardRegist(ReviewBoardDTO reviewBoardDTO);
+	ReviewBoardDTO reviewBoardRegist(ReviewBoardDTO reviewBoardDTO);
+
+	/*첨부파일 insert*/
+
+
+
+
 
 	/*게시판 수정*/
 
 	int modify (ReviewBoardDTO reviewBoardDTO);
+
+	void saveFile(ReviewBoardFileDTO reviewBoardFileDTO);
 }

@@ -11,7 +11,7 @@
         email as email,
         phone as phone,
         birthday as birthday,
-        `role` as role
+
     FROM
         users
     WHERE
