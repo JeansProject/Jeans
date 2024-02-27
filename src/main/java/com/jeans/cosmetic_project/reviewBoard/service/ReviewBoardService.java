@@ -6,13 +6,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.jeans.cosmetic_project.reviewBoard.dao.ReviewBoardRepository;
 import com.jeans.cosmetic_project.reviewBoard.dto.ReviewBoardFileDTO;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.jeans.cosmetic_project.common.paging.Pagenation;
 import com.jeans.cosmetic_project.common.paging.SelectCriteria;
-import com.jeans.cosmetic_project.reviewBoard.dao.ReviewBoardMapper;
+
 import com.jeans.cosmetic_project.reviewBoard.dto.ReviewBoardDTO;
 
 import lombok.extern.slf4j.Slf4j;
@@ -23,9 +24,9 @@ import org.springframework.web.multipart.MultipartFile;
 @Transactional // 커밋 롤백을 위한 어노테이션
 public class ReviewBoardService {
 
-	private final ReviewBoardMapper reviewBoardMapper;
+	private final ReviewBoardRepository reviewBoardMapper;
 
-	public ReviewBoardService(ReviewBoardMapper reviewBoardMapper) {
+	public ReviewBoardService(ReviewBoardRepository reviewBoardMapper) {
 		this.reviewBoardMapper = reviewBoardMapper;
 
 	}
@@ -87,7 +88,10 @@ public class ReviewBoardService {
 			//파일 있다.(1)
 			reviewBoardDTO.setFileAttached(1);
 			//게시글 저장 후 id값 활용을 위해 리턴 받음. -> id가 reviewBoard의 고유값 //반환형으로 바꿔야함.(2)
-			ReviewBoardDTO savedReviewBoard=reviewBoardMapper.reviewBoardRegist(reviewBoardDTO);
+//			ReviewBoardDTO savedReviewBoard= reviewBoardMapper.reviewBoardRegist(reviewBoardDTO);
+			log.info (reviewBoardDTO.getSeq()+"++:");
+			reviewBoardMapper.reviewBoardRegist(reviewBoardDTO);
+			log.info (reviewBoardDTO.getSeq()+":");
 
 			//파일만 따로 가져 오기 (multipartFile 객체에 대해서 잘 알아야 할듯) (3)
 			for(MultipartFile boardFile: reviewBoardDTO.getBoardFile()){
@@ -106,10 +110,10 @@ public class ReviewBoardService {
 				//필요한게 originalFilename, storedFilename, saveBoard.getId() "고유값을 가져온단말이야, 왜 가져오는거야?"
 				reviewBoardFileDTO.setOriginalFileName(originalFilename);
 				reviewBoardFileDTO.setStoredFileName(storedFileName);
-				reviewBoardFileDTO.setReviewBoardSeq(savedReviewBoard.getSeq());
+				reviewBoardFileDTO.setReviewBoardSeq(reviewBoardDTO.getSeq());
 				// 파일 저장용 폴더에 파일 저장 처리
 				//String savePath = "/Users/codingrecipe/development/intellij_community/spring_upload_files/" + storedFileName; // mac
-                 String savePath = "C:/Users/LEEHYUNJAE/pring_upload_files/" + storedFileName;
+                 String savePath = "C:\\Users/LEEHYUNJAE/spring_upload_files/" + storedFileName;
 				boardFile.transferTo(new File(savePath));
 				// board_file_table 저장 처리
 				reviewBoardMapper.saveFile(reviewBoardFileDTO);

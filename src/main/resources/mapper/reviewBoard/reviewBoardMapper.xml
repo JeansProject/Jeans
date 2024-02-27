@@ -3,7 +3,7 @@
 
 
 <mapper
-	namespace="com.jeans.cosmetic_project.reviewBoard.dao.ReviewBoardMapper">
+	namespace="ReviewBoardRepository">
 
 	<resultMap id="generalBoardResultMap"
 		type="com.jeans.cosmetic_project.reviewBoard.dto.ReviewBoardDTO">
@@ -17,14 +17,14 @@
 		<result column="count" property="count" />
 		<!-- 추가로 필요한 속성들을 계속해서 추가 -->
 	</resultMap>
-	
 
 
 
 
 
-	<select id="selectTotalCount" resultType="_int"
-		parameterType="hashmap">
+
+	<select id="selectTotalCount" resultType="int" parameterType="hashmap">
+
 		SELECT COUNT(*)
 		FROM review_board A
 		<where>
@@ -90,7 +90,7 @@
 		values (#{title}, #{writer}, #{content}, #{grade}, #{fileAttached})
 	</insert>
 	<insert id="saveFile" parameterType="com.jeans.cosmetic_project.reviewBoard.dto.ReviewBoardFileDTO">
-		insert into board_file_table(originalFileName, storedFileName, seq)
+		insert into reviewboard_file_table(originalFileName, storedFileName, seq)
 		values (#{originalFileName}, #{storedFileName}, #{reviewBoardSeq})
 	</insert>
 
