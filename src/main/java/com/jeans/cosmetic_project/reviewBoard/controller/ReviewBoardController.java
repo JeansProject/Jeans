@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import com.jeans.cosmetic_project.user.dto.UserDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jeans.cosmetic_project.reviewBoard.dto.ReviewBoardDTO;
 import com.jeans.cosmetic_project.reviewBoard.service.ReviewBoardService;
-import com.jeans.cosmetic_project.user.dto.User;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -74,14 +74,14 @@ public class ReviewBoardController {
 	public String registReviewBoard(ReviewBoardDTO reviewBoardDTO, HttpSession session) {
 		/*작성자 session 객체에서 가져가는 것을 넣어야함*/
 		/* object가 반환되고, user 객체로 형변환이 필요 */
-		User user = (User) session.getAttribute("loginUser");//user.get
+		UserDto userDto = (UserDto) session.getAttribute("loginUser");//user.get
 		//reviewBoardDTO.setWriter(user.getId());
 		// String name= user.getId();
-		log.info("User 객체{}", user);
+		log.info("User 객체{}", userDto);
 		/*로그인을 안해서 세션이 없어서 일단 입력*/
 		/*질문! getName 했는데 id가 나오는데?
 		 * User라는 객체에 대한 정보는 알았지만 session에 어떻게 담기는지 질문*/
-		reviewBoardDTO.setWriter(user.getName());
+		reviewBoardDTO.setWriter(userDto.getName());
 
 		/*grade 뷰완성 */
 		/*grade 에 대한 테스트(뷰를 아직 못만들어서) */
@@ -96,13 +96,13 @@ public class ReviewBoardController {
 	public String ReviewBoardDetatil(@RequestParam int seq, Model model, HttpSession session) {
 		//게시판 클릭했을떄 seq 를 타고 db에 요청할 예정,.
 		log.info("[reviewBoardController]seq:{}", seq);
-		User user = (User) session.getAttribute("loginUser");
+		UserDto userDto = (UserDto) session.getAttribute("loginUser");
 		ReviewBoardDTO ReviewBoardDetail = reviewBoardService.selectBoardDetatil(seq);
 		ReviewBoardDetail.setSeq(seq);
 		log.info("[reviewBoardController]ReviewBoardDetail:{}", ReviewBoardDetail);
 
 		model.addAttribute("reviewBoard", ReviewBoardDetail);
-		model.addAttribute("loginUser",user.getName());
+		model.addAttribute("loginUser", userDto.getName());
 		//서비스 로직에서 연산하고 나온값에 대한 처리
 
 		/*DTO 까지 넘어오는거 확인 뷰 템플릿 그리고 거기다가 뿌리는거 연습해야함 .*/

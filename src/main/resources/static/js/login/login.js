@@ -23,9 +23,19 @@ const login = {
     })
     .then(response => response.text())
     .then(data => {
-      console.log(data);
-      if(!data) return alert('아이디와 비밀번호를 확인하세요');
-      location.href = '/main';
+      const parsedData = JSON.parse(data);
+      console.log(parsedData)
+
+      if(parsedData.message) {
+        console.log('fail')
+        if(parsedData.message === 'Invalid password') return alert('비밀번호를 확인하세요');
+        else if(parsedData.message === 'No user registered with this details!') return alert('아이디와 비밀번호를 확인하세요');
+      }
+      else {
+        console.log('success')
+        console.log(data);
+        location.href = '/main';
+      }
     })
     .catch(error => {
       console.log(error)

@@ -1,9 +1,9 @@
 package com.jeans.cosmetic_project.login.service;
 
 import com.jeans.cosmetic_project.login.dto.LoginRequestDto;
-import com.jeans.cosmetic_project.user.dto.User;
+import com.jeans.cosmetic_project.user.dto.UserDto;
 
 public interface LoginService {
 
-    User verifyUser(LoginRequestDto loginRequestDto);
+    UserDto verifyUser(LoginRequestDto loginRequestDto);
 }

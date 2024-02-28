@@ -1,28 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jeans.cosmetic_project.login.dao.LoginDao">
-
-    <select id="verifyUser" parameterType="com.jeans.cosmetic_project.login.dto.LoginRequestDto" resultType="com.jeans.cosmetic_project.user.dto.User">
+    <select id="findUserByUsername" parameterType="String" resultType="com.jeans.cosmetic_project.user.dto.UserDto">
         SELECT
             `seq` as seq,
             id as id,
-            password as encodedPassword,
-            `name` as name,
-            age as age,
-            email as email,
-            phone as phone,
-            birthday as birthday
-        FROM
-            users
-        WHERE
-            id = #{id}
-    </select>
-
-    <select id="findByUserName" parameterType="String" resultType="com.jeans.cosmetic_project.user.dto.User">
-        SELECT
-            `seq` as seq,
-            id as id,
-            password as encodedPassword,
+            password as password,
             `name` as name,
             age as age,
             email as email,
@@ -30,8 +13,18 @@
             birthday as birthday,
             `role` as role
         FROM
-            users
+            users `u`
         WHERE
-            id = #{id}
+            id = #{username}
+    </select>
+
+    <select id="findAuthoritiesByUserId" parameterType="int" resultType="com.jeans.cosmetic_project.user.dto.Authority">
+        SELECT
+            seq as seq,
+            `name` as name
+        FROM
+            authorities
+        WHERE
+            user_seq = #{userSeq}
     </select>
 </mapper>

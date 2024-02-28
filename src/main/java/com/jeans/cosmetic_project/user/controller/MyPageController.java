@@ -1,6 +1,6 @@
 package com.jeans.cosmetic_project.user.controller;
 
-import com.jeans.cosmetic_project.user.dto.User;
+import com.jeans.cosmetic_project.user.dto.UserDto;
 import com.jeans.cosmetic_project.user.service.MyPageService;
 import javax.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -23,8 +23,8 @@ public class MyPageController {
     public String myPage(Model model, @PathVariable("id") String id, HttpSession session) {
 
         log.info("loginUser = {}", session.getAttribute("loginUser"));
-        User user = myPageServiceImpl.findUserById(id);
-        model.addAttribute("loginUser", user);
+        UserDto userDto = myPageServiceImpl.findUserById(id);
+        model.addAttribute("loginUser", userDto);
         return "myPage/myPage";
     }
 
