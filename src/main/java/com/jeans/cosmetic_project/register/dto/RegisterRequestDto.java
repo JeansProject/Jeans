@@ -12,6 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 public class RegisterRequestDto {
 
+    private int seq;
     private String id;
     private String password;
     private String name;

@@ -22,5 +22,6 @@ public class RegisterServiceImpl implements RegisterService{
         String encodedPassword = bCryptPasswordEncoder.encode(registerRequestDto.getPassword());
         registerRequestDto.setEncodedPassword(encodedPassword);
         registerDao.register(registerRequestDto);
+        registerDao.insertRole(registerRequestDto.getSeq());
     }
 }

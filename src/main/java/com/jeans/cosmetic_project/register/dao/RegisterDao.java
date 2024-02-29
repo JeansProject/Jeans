@@ -7,4 +7,6 @@ import org.apache.ibatis.annotations.Mapper;
 public interface RegisterDao {
 
     void register(RegisterRequestDto registerRequestDto);
+
+    void insertRole(int seq);
 }
