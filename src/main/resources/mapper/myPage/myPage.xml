@@ -10,8 +10,7 @@
         age as age,
         email as email,
         phone as phone,
-        birthday as birthday,
-
+        birthday as birthday
     FROM
         users
     WHERE
@@ -24,5 +23,7 @@
         name = #{name},
         email = #{email},
         phone = #{phone}
+    WHERE
+        seq = #{seq}
   </update>
 </mapper>

@@ -1,8 +1,10 @@
 package com.jeans.cosmetic_project.user.controller;
 
+import com.jeans.cosmetic_project.common.annotation.LoginId;
 import com.jeans.cosmetic_project.user.dto.UserDto;
 import com.jeans.cosmetic_project.user.service.MyPageService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
