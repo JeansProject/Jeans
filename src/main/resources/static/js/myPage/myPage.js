@@ -2,6 +2,7 @@ const myPage = {
 
 	init: function() {
 		console.log('my page js init');
+		this.eventBinding();
 	},
 
 	getUserInfoById: function() {
@@ -26,17 +27,56 @@ const myPage = {
 	},
 
 	setUserInfo: function(data) {
-		const idInput = document.querySelector('#id');
-		const passwordInput = document.querySelector('#password');
-		const nameInput = document.querySelector('#name');
-		const emailInput = document.querySelector('#email');
-		const phoneInput = document.querySelector('#phone');
+		document.querySelector('#id').value = data.id;
+		document.querySelector('#name').value = data.name;
+		document.querySelector('#email').value = data.email;
+		document.querySelector('#phone').value = data.phone;
+	},
 
-		idInput.value = data.id;
-		passwordInput.value = data.password;
-		nameInput.value = data.name;
-		emailInput.value = data.email;
-		phoneInput.value = data.phone;
+	updateUser: function() {
+		const seq = document.querySelector('#updateBtn').dataset.seq;
+		const id = document.querySelector('#id').value.trim();
+		const name = document.querySelector('#name').value.trim();
+		const email = document.querySelector('#email').value.trim();
+		const phone = document.querySelector('#phone').value.trim();
+
+		const requestBody = {
+			name,
+			email,
+			phone
+		}
+
+		fetch(`${_common.getContextPath()}`, {
+			method: "PUT",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(requestBody)
+		})
+		.then((response) => response.text())
+		.then(data => {
+			const parsedData = JSON.parse(data);
+			console.log(parsedData)
+
+			if(parsedData.message) {
+				return alert('수정 중 오류 발생');
+			}else {
+				alert('수정 완료')
+				parsedData.id = id;
+				this.setUserInfo(parsedData);
+			}
+		})
+		.catch((e) => {
+			console.log(e);
+		});
+	},
+
+	eventBinding: function() {
+		console.log('event binding');
+		document.querySelector('#updateBtn').addEventListener('click', this.updateUser);
+		document.querySelector('#cancelBtn').addEventListener('click', function() {
+			location.href = '/main';
+		});
 	}
 }
 

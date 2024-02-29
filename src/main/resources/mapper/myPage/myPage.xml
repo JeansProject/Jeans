@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jeans.cosmetic_project.user.dao.MyPageDao">
 
-  <select id="findUserById" parameterType="String" resultType="com.jeans.cosmetic_project.user.dto.User">
+  <select id="findUserById" parameterType="String" resultType="com.jeans.cosmetic_project.user.dto.UserDto">
     SELECT
         seq as seq,
         id as id,
@@ -17,4 +17,12 @@
     WHERE
         seq = #{id}
   </select>
+
+  <update id="updateUser" parameterType="com.jeans.cosmetic_project.user.dto.UserDto">
+    UPDATE users
+    SET
+        name = #{name},
+        email = #{email},
+        phone = #{phone}
+  </update>
 </mapper>

@@ -26,8 +26,9 @@
               <a class="nav-link" href="#">best price</a>
             </li>
             <li class="nav-item mx-3">
-              <a class="nav-link d-none d-lg-inline" th:href="${session.loginUser != null} ? '/my-page/'+${session.loginUser.seq} : '/login'">
-<!--              <a class="nav-link d-none d-lg-inline" th:href="${session.loginUser != null} ? '{/my-page/{id}(id = ${session.loginUser.seq})}' : '{/login}'">-->
+              <a class="nav-link d-none d-lg-inline" th:href="${AUTH_USER != null} ? '/my-page/'+${AUTH_USER.userSeq} : '/login'">
+<!--              <a class="nav-link d-none d-lg-inline" th:href="@{/login}">-->
+<!--              <a class="nav-link d-none d-lg-inline" th:href="${session.loginUserDto != null} ? '{/my-page/{id}(id = ${session.loginUserDto.seq})}' : '{/login}'">-->
                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="40" fill="#96b8dc"
                   class="bi bi-person" viewBox="0 0 16 16">
                   <path
