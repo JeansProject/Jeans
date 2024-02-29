@@ -2,17 +2,21 @@ package com.jeans.cosmetic_project.user.dto;
 
 import java.util.Collection;
 import lombok.Getter;
+import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 
 @Getter
+@ToString
 public class AuthenticatedUser implements UserDetails {
 
     private User user;
+    private int userSeq;
 
-    public AuthenticatedUser(User user) {
+    public AuthenticatedUser(User user, int userSeq) {
         this.user = user;
+        this.userSeq = userSeq;
     }
 
     @Override

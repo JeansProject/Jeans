@@ -20,6 +20,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -54,7 +55,9 @@ public class LoginController {
         List<UserDto> users = loginDao.findUserByUsername(username);
         if (users.size() > 0) {
             if(bCryptPasswordEncoder.matches(password, users.get(0).getPassword())) {
-                UserDetails authenticatedUser = loginService.loadUserByUsername(username);
+                User user = new User(users.get(0).getId(), users.get(0).getPassword(), getGrantedAuthorities(users.get(0).getSeq()));
+//                UserDetails authenticatedUser = loginService.loadUserByUsername(username);
+                UserDetails authenticatedUser = new AuthenticatedUser(user, users.get(0).getSeq());
                 Authentication authentication = new UsernamePasswordAuthenticationToken(authenticatedUser, authenticatedUser.getPassword(), authenticatedUser.getAuthorities());
                 SecurityContextHolder.getContext().setAuthentication(authentication);
                 return ResponseEntity.ok(authentication);
@@ -66,12 +69,12 @@ public class LoginController {
         }
     }
 
-//    private List<GrantedAuthority> getGrantedAuthorities(int userSeq) {
-//        List<Authority> authorities = loginDao.findAuthoritiesByUserId(userSeq);
-//        List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
-//        for (Authority authority : authorities) {
-//            grantedAuthorities.add(new SimpleGrantedAuthority(authority.getName()));
-//        }
-//        return grantedAuthorities;
-//    }
+    private List<GrantedAuthority> getGrantedAuthorities(int userSeq) {
+        List<Authority> authorities = loginDao.findAuthoritiesByUserId(userSeq);
+        List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
+        for (Authority authority : authorities) {
+            grantedAuthorities.add(new SimpleGrantedAuthority(authority.getName()));
+        }
+        return grantedAuthorities;
+    }
 }

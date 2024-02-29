@@ -7,4 +7,6 @@ import org.apache.ibatis.annotations.Mapper;
 public interface MyPageDao {
 
     UserDto findUserById(String id);
+
+    void updateUser(UserDto user);
 }

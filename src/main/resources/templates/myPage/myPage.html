@@ -22,14 +22,14 @@
 					<div class="row mt-5 mx-auto gy-2">
 						<div class="col-sm-6">
 							<div class="form-floating">
-								<input type="text" class="form-control" id="id" th:value="${loginUserDto.id}">
+								<input type="text" class="form-control" id="id" th:value="${loginUser.id}" disabled>
 								<label for="">아이디</label>
 							</div>
 						</div>
 
 						<div class="col-sm-6">
 							<div class="form-floating">
-								<input type="password" class="form-control" id="password">
+								<input type="password" class="form-control" id="password" disabled>
 								<label for="">비밀번호</label>
 							</div>
 						</div>
@@ -38,25 +38,33 @@
 						<div class="row mt-3 mx-auto gy-2">
 							<div class="col-sm-4">
 								<div class="form-floating">
-									<input type="text" class="form-control" id="name" th:value="${loginUserDto.name}">
+									<input type="text" class="form-control" id="name" th:value="${loginUser.name}">
 									<label for="">이름</label>
 								</div>
 							</div>
 							<div class="col-sm-4">
 								<div class="form-floating">
-									<input type="text" class="form-control" id="email" th:value="${loginUserDto.email}">
+									<input type="text" class="form-control" id="email" th:value="${loginUser.email}">
 									<label for="">이메일</label>
 								</div>
 							</div>
 							<div class="col-sm-4">
 								<div class="form-floating">
-									<input type="text" class="form-control" id="phone" th:value="${loginUserDto.phone}">
+									<input type="text" class="form-control" id="phone" th:value="${loginUser.phone}">
 									<label for="">전화번호</label>
 								</div>
 							</div>
 						</div>
 <!--				</form>-->
 					</div>
+				<div class="row mt-3 mx-auto gy-2 justify-content-center">
+					<div class="col-sm-auto">
+						<button class="form-control" id="updateBtn" th:data-seq="${loginUser.seq}">수정</button>
+					</div>
+					<div class="col-sm-auto">
+						<button class="form-control" id="cancelBtn">취소</button>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
